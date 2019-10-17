@@ -1,3 +1,11 @@
+'''
+    Created on Oct 16, 2019
+    
+    @author: Hunter Donald hzd0011
+    
+    Acceptance test file for create.py 
+'''
+
 from unittest import TestCase
 import sudoku.create as sudoku 
 

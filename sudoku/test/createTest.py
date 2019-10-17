@@ -102,7 +102,8 @@ class CreateTest(TestCase):
         expectedResult['status'] = 'error: invalid level'
         actualResult = sudoku._create(parms)
         self.assertEqual(expectedResult, actualResult)
-        
+    # test100_950 was run as a yellow light test because testing for a string also 
+    # covered the empty test.  
     def test100_950TestWithEmptyLevel(self):
         parms = {}
         parms['level'] = ''

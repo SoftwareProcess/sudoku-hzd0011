@@ -94,3 +94,11 @@ class CreateTest(TestCase):
         expectedResult['status'] = 'error: invalid level'
         actualResult = sudoku._create(parms)
         self.assertEqual(expectedResult, actualResult)
+        
+    def test100_940TestWithFloatLevel(self):
+        parms = {}
+        parms['level'] = 2.0
+        expectedResult = {}
+        expectedResult['status'] = 'error: invalid level'
+        actualResult = sudoku._create(parms)
+        self.assertEqual(expectedResult, actualResult)

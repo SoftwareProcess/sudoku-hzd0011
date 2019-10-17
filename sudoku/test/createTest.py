@@ -53,3 +53,12 @@ class CreateTest(TestCase):
         expectedResult['status'] = 'ok'
         actualResult = sudoku._create(parms)
         self.assertEqual(expectedResult, actualResult)
+        
+    def test100_060TestCreatingGridWithDefaultLevel(self):
+        parms = {}
+        expectedResult = {}
+        expectedResult['grid'] = [0, 0, -3, 0, 0, -7, 0, -2, 0, -4, 0, -7, 0, 0, -5, -3, 0, 0, 0, 0, -8, -9, 0, -6, -7, 0, -1, -8, 0, -2, -5, 0, 0, -6, 0, -4, 0, -7, 0, 0, -8, 0, -1, -5, 0, -5, 0, 0, -7, -6, 0, 0, 0, -9, 0, 0, -5, 0, 0, -9, 0, 0, -6, 0, -1, 0, -6, 0, 0, -2, -8, 0, 0, -2, -4, -1, -7, 0, -5, 0, 0]
+        expectedResult['integrity'] = 'b594924588d873f60df054a64a7bfaa1d4196ab1d2000f1788a453c1765b05b8'
+        expectedResult['status'] = 'ok'
+        actualResult = sudoku._create(parms)
+        self.assertEqual(expectedResult, actualResult)

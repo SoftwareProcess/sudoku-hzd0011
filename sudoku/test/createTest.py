@@ -1,5 +1,6 @@
 from unittest import TestCase
 import sudoku.create as sudoku 
+from builtins import None
 
 class CreateTest(TestCase):
     # Happy path
@@ -98,6 +99,14 @@ class CreateTest(TestCase):
     def test100_940TestWithFloatLevel(self):
         parms = {}
         parms['level'] = 2.0
+        expectedResult = {}
+        expectedResult['status'] = 'error: invalid level'
+        actualResult = sudoku._create(parms)
+        self.assertEqual(expectedResult, actualResult)
+        
+    def test100_940TestWithNoneLevel(self):
+        parms = {}
+        parms['level'] = None
         expectedResult = {}
         expectedResult['status'] = 'error: invalid level'
         actualResult = sudoku._create(parms)

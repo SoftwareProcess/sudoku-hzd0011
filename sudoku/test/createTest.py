@@ -1,6 +1,6 @@
 from unittest import TestCase
 import sudoku.create as sudoku 
-from builtins import None
+
 
 class CreateTest(TestCase):
     # Happy path

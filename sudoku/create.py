@@ -26,4 +26,6 @@ def _create(parms):
         result['status'] = 'ok'
     elif(parms['level'] < 1):
         result['status'] = 'error: invalid level'
+    elif(parms['level'] > 5):
+        result['status'] = 'error: invalid level'
     return result

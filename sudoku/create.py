@@ -25,6 +25,10 @@ def setGrid(parms):
                   -7, 0, 0, -8, 0, -1, -5, 0, -5, 0, 0, -7, -6, 0, 0, 0, -9, 0, 0, 
                   -5, 0, 0, -9, 0, 0, -6, 0, -1, 0, -6, 0, 0, -2, -8, 0, 0, -2, -4, 
                   -1, -7, 0, -5, 0, 0]
+    level4Grid = [0, -6, -7, 0, -2, 0, 0, 0, -3, 0, -8, 0, -7, 0, -3, 0, 0, -6, -1, 
+                  0, 0, 0, 0, 0, 0, -7, 0, 0, -5, 0, 0, -3, 0, 0, 0, -8, -8, 0, 0, 0, 
+                  -4, 0, 0, 0, -1, -4, 0, 0, 0, -6, 0, 0, -5, 0, -3, 0, 0, 0, 0, 0, 0, 
+                  0, -2, -6, 0, 0, -2, 0, -4, 0, -3, 0, -5, 0, 0, 0, -9, 0, -8, -4, 0]
     
     if (parms['level'] == 1):
         returnGrid = level1Grid
@@ -32,6 +36,8 @@ def setGrid(parms):
         returnGrid = level2Grid
     if (parms['level'] == 3):
         returnGrid = level3Grid
+    if (parms['level'] == 4):
+        returnGrid = level4Grid
     return returnGrid
     
 def setHashValue(parms):

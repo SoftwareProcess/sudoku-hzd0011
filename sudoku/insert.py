@@ -10,7 +10,9 @@ def isValidGrid(grid):
     if (len(grid) < 81):
         isGrid = False
         return isGrid
-    
+    for gridIndex in range(81):
+        if (not(isinstance(grid[gridIndex], int))):
+            isGrid = False
     return isGrid
 
 def calculateHash(grid):

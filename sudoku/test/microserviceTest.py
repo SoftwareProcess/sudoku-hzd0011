@@ -121,3 +121,10 @@ class MicroserviceTest(TestCase):
         self.assertEqual(len(actualResult), 1)
         self.assertIn(actualResult['status'][0:5], 'error:')
         
+    def test200_920ShouldErrWhenLevelIsString(self):
+        parms = {'level':"five"}
+        parms['op'] = 'create'
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 1)
+        self.assertIn(actualResult['status'][0:5], 'error:')
+        

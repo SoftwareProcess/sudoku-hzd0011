@@ -12,6 +12,9 @@ def _create(parms):
     if (int(parms['level']) < 1):
         result['status'] = 'error: invalid level'
         return result
+    if (int(parms['level']) > 5):
+        result['status'] = 'error: invalid level'
+        return result
     return result
 
 def setGrid(parms):

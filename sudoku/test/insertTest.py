@@ -65,6 +65,7 @@ class InsertTest(TestCase):
     # insertValue() unit tests
     # Happy path analysis:
     #    test300_100 insert value into grid at location
+    #    test300_110 insert value into grid at location
     def test300_100ShouldReturnGridWithValidInsertedValue(self):
         grid = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, 
                 -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, 
@@ -101,5 +102,23 @@ class InsertTest(TestCase):
                 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, 
                 -4, -3, -2, -7, 0, 0]
         actualResult = sudoku.insertValue(grid, value, row, col)
+        self.assertEqual(expectedResult, actualResult)
+        
+    # Unit Test for isValueInRow
+    # happy path analysis:
+    #    test400_100 value is in row
+    #    test400_110 value is not in row
+    
+    def test400_100ShouldReturnTrueIfValueIsInRow(self):
+        grid = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, 
+                -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, 
+                -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, 
+                -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 
+                0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, 
+                -4, -3, -2, -7, 0, 0]
+        value = 3
+        row = 1
+        expectedResult = True 
+        actualResult = sudoku.isValueInRow(grid, value, row)
         self.assertEqual(expectedResult, actualResult)
         

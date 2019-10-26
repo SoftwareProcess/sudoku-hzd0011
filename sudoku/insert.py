@@ -40,3 +40,12 @@ def insertValue(grid, value, row, col):
     indexInGrid = (9 * (row - 1)) + col
     grid[indexInGrid - 1] = value
     return grid
+
+def _isValueInRow(grid, value, row):
+    pass
+
+def _isValueInColumn(grid, value, row):
+    pass
+
+def _isValueInSubgrid(grid, value, row, col):
+    pass

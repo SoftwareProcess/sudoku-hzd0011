@@ -36,5 +36,5 @@ def calculateHash(grid):
     strToReturn = hashValue.hexdigest()
     return strToReturn
 
-def insertValue(grid, value):
+def insertValue(grid, value, location):
     pass

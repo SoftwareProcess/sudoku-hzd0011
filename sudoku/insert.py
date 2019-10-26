@@ -1,4 +1,5 @@
 import hashlib
+import math
 
 def _insert(parms):
     result = {'status': 'insert stub'}
@@ -50,7 +51,7 @@ def _isValueInRow(grid, value, row):
             matrix[rowIndex][columnIndex] = grid[gridIndex]
             gridIndex+=1
     for entry in matrix[row - 1]:
-        if (entry == value):
+        if (math.fabs(entry) == math.fabs(value)):
             isInRow = True 
             return isInRow
     return isInRow

@@ -8,7 +8,7 @@
 '''
 
 def _create(parms):
-    result = {'status': 'insert stub'}
+    result = {'status': 'create stub'}
     if (parms['level'] < 1):
         result['status'] = 'error: invalid level'
         return result

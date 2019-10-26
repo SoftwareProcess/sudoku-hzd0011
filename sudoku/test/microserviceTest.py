@@ -3,6 +3,7 @@ import http.client
 from urllib.parse import urlencode
 import json
 import sudoku.dispatch as sudoku 
+from unittest.case import skip
 
 class MicroserviceTest(TestCase):
     def setUp(self):
@@ -36,6 +37,7 @@ class MicroserviceTest(TestCase):
         
 # Happy path
 #    Test that each dispatched operation returns a status element
+    @skip
     def test100_010ShouldVerifyInstallOfCreate(self):
         parms = {}
         parms['op'] = 'create'

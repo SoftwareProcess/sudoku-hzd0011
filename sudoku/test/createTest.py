@@ -75,3 +75,13 @@ class CreateTest(TestCase):
                   -1, -7, 0, -5, 0, 0]
         actualResult = sudoku.setGrid(parms)
         self.assertEqual(expectedResult, actualResult)
+        
+    # setHashValue unit tests
+    # Test for level 1
+    def test110_010ShouldReturnLevel1Hash(self):
+        parms = {}
+        parms['level'] = 1
+        expectedResult = '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5'
+        actualResult = sudoku.setHashValue(parms)
+        self.assertEqual(expectedResult, actualResult)
+    

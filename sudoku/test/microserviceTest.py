@@ -161,3 +161,15 @@ class MicroserviceTest(TestCase):
         self.assertEqual(len(actualResult), 3)
         self.assertEqual(level1Grid, actualResult['grid'])
         
+    def test200_110ShouldReturnLevel2Grid(self):
+        level2Grid = [0, -3, 0, 0, 0, -2, 0, -6, -5, -5, -8, 0, -1, -3, -4, 0, -2, 
+                  -9, 0, -2, -7, 0, -5, 0, 0, 0, -1, 0, 0, -2, 0, 0, -9, 0, -1, 
+                  -3, -8, -5, -9, 0, -7, -1, 0, -4, -2, -1, 0, 0, -6, -2, 0, 0, 
+                  0, -7, 0, 0, 0, 0, -4, -7, -2, -5, 0, -6, -7, -5, 0, 0, -8, 0, 
+                  -9, 0, 0, -9, -4, -5, -6, 0, 0, -7, -8]
+        parms = {'level' : "2"}
+        parms['op'] = 'create'
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 3)
+        self.assertEqual(level2Grid, actualResult['grid'])
+        

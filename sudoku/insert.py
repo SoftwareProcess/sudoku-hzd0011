@@ -42,7 +42,19 @@ def insertValue(grid, value, row, col):
     return grid
 
 def _isValueInRow(grid, value, row):
-    pass
+    matrix = [[0 for rowNum in range(9)] for colNum in range(9)]
+    isInRow = False
+    gridIndex = 0
+    for rowIndex in range(9):
+        for columnIndex in range(9):
+            matrix[rowIndex][columnIndex] = grid[gridIndex]
+            gridIndex+=1
+    columnIndex = 0
+    for columnIndex in range(9):
+        if (matrix[row - 1][columnIndex] == value):
+            isInRow = True
+            return isInRow
+    return isInRow  
 
 def _isValueInColumn(grid, value, row):
     pass

@@ -9,6 +9,13 @@
 
 def _create(parms):
     result = {}
+    if ((not 'level' in parms)):
+        grid = setGrid(parms)
+        integrity = setHashValue(grid)
+        result['grid'] = grid
+        result['integrity'] = str(integrity)
+        result['status'] = 'ok'
+        return result
     if (len(parms['level']) == 0):
         result['status'] = 'error: invalid level'
         return result

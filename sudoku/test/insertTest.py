@@ -12,3 +12,4 @@ class InsertTest(TestCase):
         expectedResult = True 
         actualResult = sudoku.isValidGrid(grid)
         self.assertEqual(expectedResult, actualResult)
+    

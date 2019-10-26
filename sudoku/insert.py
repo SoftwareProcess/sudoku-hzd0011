@@ -3,7 +3,11 @@ def _insert(parms):
     return result
 
 def isValidGrid(grid):
-    pass
+    isGrid = True
+    for gridIndex in range(81):
+        if (not(isinstance(grid[gridIndex], int))):
+            isGrid = False
+    return isGrid
 
 def calculateHash(grid):
     pass

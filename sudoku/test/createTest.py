@@ -11,7 +11,7 @@ import sudoku.create as sudoku
 
 
 class CreateTest(TestCase):
-    # setGrid tests
+    # setGrid unit tests
     # Test for level 1
     def test100_010ShouldReturnLevel1Grid(self):
         parms = {}
@@ -63,5 +63,15 @@ class CreateTest(TestCase):
                   0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, 0, 0, 0,
                    0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, -2, 0, 
                    -1, 0, 0, -3, 0, 0, -5, 0, -4, 0, 0, -6, 0, 0, 0, 0, 0]
+        actualResult = sudoku.setGrid(parms)
+        self.assertEqual(expectedResult, actualResult)
+    # Test for no level value given
+    def test100_060ShouldReturnLevel3Grid(self):
+        parms = {}
+        expectedResult = [0, 0, -3, 0, 0, -7, 0, -2, 0, -4, 0, -7, 0, 0, -5, -3, 0, 0, 0, 
+                  0, -8, -9, 0, -6, -7, 0, -1, -8, 0, -2, -5, 0, 0, -6, 0, -4, 0, 
+                  -7, 0, 0, -8, 0, -1, -5, 0, -5, 0, 0, -7, -6, 0, 0, 0, -9, 0, 0, 
+                  -5, 0, 0, -9, 0, 0, -6, 0, -1, 0, -6, 0, 0, -2, -8, 0, 0, -2, -4, 
+                  -1, -7, 0, -5, 0, 0]
         actualResult = sudoku.setGrid(parms)
         self.assertEqual(expectedResult, actualResult)

@@ -166,3 +166,10 @@ class InsertTest(TestCase):
         actualResult = sudoku._isValueInColumn(grid, value, column)
         self.assertEqual(expectedResult, actualResult)
         
+    # Unit tests for isInSubGrid
+    # Happy path analysis:
+    #    test600_100 value is in subgrid
+    #    test600_110 value is not in subgrid
+    
+    
+        

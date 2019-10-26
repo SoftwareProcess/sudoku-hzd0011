@@ -56,15 +56,19 @@ def _isValueInRow(grid, value, row):
             return isInRow
     return isInRow
 
-def _isValueInColumn(grid, value, row):
+def _isValueInColumn(grid, value, column):
     matrix = [[0 for rowNum in range(9)] for colNum in range(9)]
     isInColumn = False
+    column = []
     gridIndex = 0
-    for columnIndex in range(9):
-        for rowIndex in range(9):
-            matrix[columnIndex][rowIndex] = grid[gridIndex]
+    for rowIndex in range(9):
+        for columnIndex in range(9):
+            matrix[rowIndex][columnIndex] = grid[gridIndex]
             gridIndex+=1
-    for entry in matrix[row - 1]:
+    rowIndex = 0
+    for rowIndex in range(9):
+        column.append(matrix[rowIndex][column - 1])
+    for entry in column:
         if (math.fabs(entry) == math.fabs(value)):
             isInColumn = True 
             return isInColumn

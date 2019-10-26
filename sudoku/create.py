@@ -9,7 +9,7 @@
 
 def _create(parms):
     result = {}
-    if (parms['level'].isalpha()):
+    if (parms['level'].isalpha() or parms['level'].isspace()):
         result['status'] = 'error: invalid level'
         return result
     if (int(parms['level']) < 1):

@@ -49,9 +49,10 @@ def _isValueInRow(grid, value, row):
         for columnIndex in range(9):
             matrix[rowIndex][columnIndex] = grid[gridIndex]
             gridIndex+=1
-    if (value in matrix[row - 1]):
-        isInRow = True 
-        return isInRow
+    for entry in matrix[row - 1]:
+        if (entry == value):
+            isInRow = True 
+            return isInRow
     return isInRow
 
 def _isValueInColumn(grid, value, row):

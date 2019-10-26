@@ -184,3 +184,37 @@ class MicroserviceTest(TestCase):
         actualResult = self.microservice(parms)
         self.assertEqual(len(actualResult), 3)
         self.assertEqual(level3Grid, actualResult['grid'])
+        
+    def test200_130ShouldReturnLevel4Grid(self):
+        level4Grid = [0, -6, -7, 0, -2, 0, 0, 0, -3, 0, -8, 0, -7, 0, -3, 0, 0, -6, -1, 
+                  0, 0, 0, 0, 0, 0, -7, 0, 0, -5, 0, 0, -3, 0, 0, 0, -8, -8, 0, 0, 0, 
+                  -4, 0, 0, 0, -1, -4, 0, 0, 0, -6, 0, 0, -5, 0, -3, 0, 0, 0, 0, 0, 0, 
+                  0, -2, -6, 0, 0, -2, 0, -4, 0, -3, 0, -5, 0, 0, 0, -9, 0, -8, -4, 0]
+        parms = {'level' : "4"}
+        parms['op'] = 'create'
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 3)
+        self.assertEqual(level4Grid, actualResult['grid'])
+        
+    def test200_140ShouldReturnLevel5Grid(self):
+        level5Grid = [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0, 
+                  0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, 0, 0, 0,
+                   0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, -2, 0, 
+                   -1, 0, 0, -3, 0, 0, -5, 0, -4, 0, 0, -6, 0, 0, 0, 0, 0]
+        parms = {'level' : "5"}
+        parms['op'] = 'create'
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 3)
+        self.assertEqual(level5Grid, actualResult['grid'])
+        
+    def test200_150ShouldReturnDefaultLevel3Grid(self):
+        level3Grid = [0, 0, -3, 0, 0, -7, 0, -2, 0, -4, 0, -7, 0, 0, -5, -3, 0, 0, 0, 
+                  0, -8, -9, 0, -6, -7, 0, -1, -8, 0, -2, -5, 0, 0, -6, 0, -4, 0, 
+                  -7, 0, 0, -8, 0, -1, -5, 0, -5, 0, 0, -7, -6, 0, 0, 0, -9, 0, 0, 
+                  -5, 0, 0, -9, 0, 0, -6, 0, -1, 0, -6, 0, 0, -2, -8, 0, 0, -2, -4, 
+                  -1, -7, 0, -5, 0, 0]
+        parms = {}
+        parms['op'] = 'create'
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 3)
+        self.assertEqual(level3Grid, actualResult['grid'])

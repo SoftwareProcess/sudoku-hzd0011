@@ -59,7 +59,7 @@ def _isValueInRow(grid, value, row):
 def _isValueInColumn(grid, value, column):
     matrix = [[0 for rowNum in range(9)] for colNum in range(9)]
     isInColumn = False
-    column = []
+    columnArray = []
     gridIndex = 0
     for rowIndex in range(9):
         for columnIndex in range(9):
@@ -67,8 +67,8 @@ def _isValueInColumn(grid, value, column):
             gridIndex+=1
     rowIndex = 0
     for rowIndex in range(9):
-        column.insert(rowIndex, matrix[rowIndex][column - 1])
-    for entry in column:
+        columnArray[rowIndex] = matrix[rowIndex][column - 1]
+    for entry in columnArray:
         if (math.fabs(entry) == math.fabs(value)):
             isInColumn = True 
             return isInColumn

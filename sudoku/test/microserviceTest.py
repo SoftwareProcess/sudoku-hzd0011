@@ -142,3 +142,22 @@ class MicroserviceTest(TestCase):
         self.assertEqual(len(actualResult), 1)
         self.assertIn(actualResult['status'][0:5], 'error:')
         
+    # Happy path analysis:
+    #    test200_100 valid level 1 grid
+    #    test200_110 valid level 2 grid
+    #    test200_120 valid level 3 grid
+    #    test200_130 valid level 4 grid
+    #    test200_140 valid level 5 grid
+    #    test200_150 default grid
+    def test200_100ShouldReturnLevel1Grid(self):
+        level1Grid = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
+                  -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
+                  0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, 
+                  -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, 
+                  -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]
+        parms = {'level' : "1"}
+        parms['op'] = 'create'
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 3)
+        self.assertEqual(level1Grid, actualResult['grid'])
+        

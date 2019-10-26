@@ -62,3 +62,24 @@ class InsertTest(TestCase):
         actualResult = sudoku.calculateHash(grid)
         self.assertEqual(expectedResult, actualResult)
         
+    # insertValue() unit tests
+    # Happy path analysis:
+    #    test300_100 insert value into grid at location
+    def test300_100ShouldReturnGridWithInsertedValue(self):
+        grid = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, 
+                -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, 
+                -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, 
+                -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 
+                0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, 
+                -4, -3, -2, -7, 0, 0]
+        value = 7
+        location = (1, 9)
+        expectedResult = [-8, -1, -5, -7, -6, -9, -3, -2, 9, -4, -9, 0, 0, 0, 
+                -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, 
+                -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, 
+                -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 
+                0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, 
+                -4, -3, -2, -7, 0, 0]
+        actualResult = sudoku.insertValue(grid, value, location)
+        self.assertEqual(expectedResult, actualResult)
+        

@@ -24,6 +24,11 @@ def _create(parms):
     if (int(parms['level']) > 5):
         result['status'] = 'error: invalid level'
         return result
+    grid = setGrid(parms)
+    integrity = setHashValue(grid)
+    result['grid'] = grid
+    result['integrity'] = str(integrity)
+    result['status'] = 'ok'
     return result
 
 def setGrid(parms):

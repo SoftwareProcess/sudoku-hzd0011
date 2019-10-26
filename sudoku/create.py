@@ -77,7 +77,7 @@ def setGrid(parms):
         returnGrid = level5Grid
     return returnGrid
     
-def setHashValue(grid):
+def setHashValue(grid):      
     
     if (grid == [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 

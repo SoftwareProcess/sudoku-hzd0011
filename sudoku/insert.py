@@ -67,7 +67,7 @@ def _isValueInColumn(grid, value, column):
             gridIndex+=1
     rowIndex = 0
     for rowIndex in range(9):
-        columnArray[rowIndex] = matrix[rowIndex][column - 1]
+        columnArray.append(matrix[rowIndex][column - 1])
     for entry in columnArray:
         if (math.fabs(entry) == math.fabs(value)):
             isInColumn = True 

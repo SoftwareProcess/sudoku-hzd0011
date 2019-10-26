@@ -162,7 +162,7 @@ class InsertTest(TestCase):
                 -4, -3, -2, -7, 0, 0]
         value = 2
         column = 1
-        expectedResult = True 
+        expectedResult = False
         actualResult = sudoku._isValueInColumn(grid, value, column)
         self.assertEqual(expectedResult, actualResult)
         

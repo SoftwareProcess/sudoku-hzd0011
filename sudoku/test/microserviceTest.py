@@ -110,5 +110,5 @@ class MicroserviceTest(TestCase):
         parms['op'] = 'create'
         actualResult = self.microservice(parms)
         self.assertEqual(len(actualResult), 1)
-        self.assertEqual(actualResult['status'], 'error: invalid level')
+        self.assertIn(actualResult['status'][0:5], 'error:')
         

@@ -8,10 +8,11 @@
 '''
 
 def _create(parms):
-    result = {}
+    result = {'status': 'insert stub'}
     if (parms['level'] < 1):
         result['status'] = 'error: invalid level'
         return result
+    return result
 
 def setGrid(parms):
     level1Grid = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 

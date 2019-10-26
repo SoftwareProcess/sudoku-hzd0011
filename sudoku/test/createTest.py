@@ -34,3 +34,14 @@ class CreateTest(TestCase):
                   -9, 0, 0, -9, -4, -5, -6, 0, 0, -7, -8]
         actualResult = sudoku.setGrid(parms)
         self.assertEqual(expectedResult, actualResult)
+    # Test for level 3    
+    def test100_030ShouldReturnLevel3Grid(self):
+        parms = {}
+        parms['level'] = 3
+        expectedResult = [0, 0, -3, 0, 0, -7, 0, -2, 0, -4, 0, -7, 0, 0, -5, -3, 0, 0, 0, 
+                  0, -8, -9, 0, -6, -7, 0, -1, -8, 0, -2, -5, 0, 0, -6, 0, -4, 0, 
+                  -7, 0, 0, -8, 0, -1, -5, 0, -5, 0, 0, -7, -6, 0, 0, 0, -9, 0, 0, 
+                  -5, 0, 0, -9, 0, 0, -6, 0, -1, 0, -6, 0, 0, -2, -8, 0, 0, -2, -4, 
+                  -1, -7, 0, -5, 0, 0]
+        actualResult = sudoku.setGrid(parms)
+        self.assertEqual(expectedResult, actualResult)

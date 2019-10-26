@@ -35,7 +35,7 @@ def setGrid(parms):
                    -1, 0, 0, -3, 0, 0, -5, 0, -4, 0, 0, -6, 0, 0, 0, 0, 0]
     returnGrid = []
     if (not('level' in parms)):
-        returnGrid = level3Grid
+        return level3Grid
     if (parms['level'] == 1):
         returnGrid = level1Grid
     if (parms['level'] == 2):

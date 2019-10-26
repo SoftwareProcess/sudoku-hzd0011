@@ -23,7 +23,7 @@ def setGrid(parms):
 
     if (parms['level'] == 1):
         returnGrid = level1Grid
-    if (parms['level' == 2]):
+    if (parms['level'] == 2]):
         returnGrid = level2Grid
     return returnGrid
     

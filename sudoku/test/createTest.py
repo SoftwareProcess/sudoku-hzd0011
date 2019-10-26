@@ -116,3 +116,11 @@ class CreateTest(TestCase):
         actualResult = sudoku.setHashValue(grid)
         self.assertEqual(expectedResult, actualResult)
     
+    def test110_050ShouldReturnLevel5Hash(self):
+        grid = [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0, 
+                  0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, 0, 0, 0,
+                   0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, -2, 0, 
+                   -1, 0, 0, -3, 0, 0, -5, 0, -4, 0, 0, -6, 0, 0, 0, 0, 0]
+        expectedResult = '110a79143bc7c2b66faff5e8fe895320d402e4f91dbbe6b969931228abb84242'
+        actualResult = sudoku.setHashValue(grid)
+        self.assertEqual(expectedResult, actualResult)

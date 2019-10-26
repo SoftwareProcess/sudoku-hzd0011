@@ -37,6 +37,6 @@ def calculateHash(grid):
     return strToReturn
 
 def insertValue(grid, value, row, col):
-    indexInGrid = (9 * row) + col
+    indexInGrid = (9 * (row - 1)) + col
     grid[indexInGrid] = value
     return grid

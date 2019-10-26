@@ -14,7 +14,7 @@ class CreateTest(TestCase):
     # setGrid unit tests
     def test100_010ShouldReturnLevel1Grid(self):
         parms = {}
-        parms['level'] = 1
+        parms['level'] = "1"
         expectedResult = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
                   0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, 
@@ -25,7 +25,7 @@ class CreateTest(TestCase):
    
     def test100_020ShouldReturnLevel2Grid(self):
         parms = {}
-        parms['level'] = 2
+        parms['level'] = "2"
         expectedResult = [0, -3, 0, 0, 0, -2, 0, -6, -5, -5, -8, 0, -1, -3, -4, 0, -2, 
                   -9, 0, -2, -7, 0, -5, 0, 0, 0, -1, 0, 0, -2, 0, 0, -9, 0, -1, 
                   -3, -8, -5, -9, 0, -7, -1, 0, -4, -2, -1, 0, 0, -6, -2, 0, 0, 
@@ -36,7 +36,7 @@ class CreateTest(TestCase):
      
     def test100_030ShouldReturnLevel3Grid(self):
         parms = {}
-        parms['level'] = 3
+        parms['level'] = "3"
         expectedResult = [0, 0, -3, 0, 0, -7, 0, -2, 0, -4, 0, -7, 0, 0, -5, -3, 0, 0, 0, 
                   0, -8, -9, 0, -6, -7, 0, -1, -8, 0, -2, -5, 0, 0, -6, 0, -4, 0, 
                   -7, 0, 0, -8, 0, -1, -5, 0, -5, 0, 0, -7, -6, 0, 0, 0, -9, 0, 0, 
@@ -47,7 +47,7 @@ class CreateTest(TestCase):
     
     def test100_040ShouldReturnLevel4Grid(self):
         parms = {}
-        parms['level'] = 4
+        parms['level'] = "4"
         expectedResult = [0, -6, -7, 0, -2, 0, 0, 0, -3, 0, -8, 0, -7, 0, -3, 0, 0, -6, -1, 
                   0, 0, 0, 0, 0, 0, -7, 0, 0, -5, 0, 0, -3, 0, 0, 0, -8, -8, 0, 0, 0, 
                   -4, 0, 0, 0, -1, -4, 0, 0, 0, -6, 0, 0, -5, 0, -3, 0, 0, 0, 0, 0, 0, 
@@ -57,7 +57,7 @@ class CreateTest(TestCase):
     
     def test100_050ShouldReturnLevel5Grid(self):
         parms = {}
-        parms['level'] = 5
+        parms['level'] = "5"
         expectedResult = [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0, 
                   0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, 0, 0, 0,
                    0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, -2, 0, 

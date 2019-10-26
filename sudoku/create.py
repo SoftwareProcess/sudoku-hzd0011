@@ -58,15 +58,15 @@ def setGrid(parms):
     returnGrid = []
     if (not('level' in parms)):
         return level3Grid
-    if (parms['level'] == 1):
+    if (parms['level'] == "1"):
         returnGrid = level1Grid
-    if (parms['level'] == 2):
+    if (parms['level'] == "2"):
         returnGrid = level2Grid
-    if (parms['level'] == 3):
+    if (parms['level'] == "3"):
         returnGrid = level3Grid
-    if (parms['level'] == 4):
+    if (parms['level'] == "4"):
         returnGrid = level4Grid
-    if (parms['level'] == 5):
+    if (parms['level'] == "5"):
         returnGrid = level5Grid
     return returnGrid
     

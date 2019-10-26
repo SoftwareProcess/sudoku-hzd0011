@@ -119,6 +119,6 @@ class InsertTest(TestCase):
         value = 3
         row = 1
         expectedResult = True 
-        actualResult = sudoku.isValueInRow(grid, value, row)
+        actualResult = sudoku._isValueInRow(grid, value, row)
         self.assertEqual(expectedResult, actualResult)
         

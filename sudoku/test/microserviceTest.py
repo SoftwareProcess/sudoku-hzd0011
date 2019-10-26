@@ -98,3 +98,17 @@ class MicroserviceTest(TestCase):
         self.assertIn('status', result)
         self.assertEquals(result['status'], sudoku.ERROR03)
         
+    # Acceptance tests for _create
+    # Sad path analysis:
+    #    test200_910: level LT 1
+    #    test200_920: level GT 5
+    #    test200_930: level value is a string
+    #    test200_940: level value is a float
+    #    test200_950: empty level value
+    def test200_910ShouldErrOnLevelLT1(self):
+        parms = {'level':"0"}
+        parms['op'] = 'create'
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 1)
+        self.assertEqual(actualResult['status'], 'error: invalid level')
+        

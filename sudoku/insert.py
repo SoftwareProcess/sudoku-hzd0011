@@ -149,3 +149,6 @@ def _isValueInSubgrid(grid, value, row, column):
             isInSubgrid = True  
             return isInSubgrid
     return isInSubgrid
+
+def isCellAHint(grid, row, column):
+    pass

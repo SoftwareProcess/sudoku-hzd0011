@@ -138,3 +138,15 @@ class InsertTest(TestCase):
         actualResult = sudoku._isValueInSubgrid(grid, value, row, column)
         self.assertEqual(expectedResult, actualResult)
         
+    # Unit tests for isCellAHint()
+    # Happy path analysis:
+    #    test700_100 value in cell before insert is a hint
+    #    test700_110 value in cell before insert is not a hint
+    
+    def test700_100ShouldReturnTrueIfValueInCellIsAHint(self):
+        grid = "[-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]"
+        row = 1
+        col = 1
+        expectedResult = True 
+        actualResult = sudoku.isCellAHint(grid, row, col)
+        self.assertEqual(expectedResult, actualResult)

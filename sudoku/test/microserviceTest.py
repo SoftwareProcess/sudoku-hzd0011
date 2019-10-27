@@ -243,6 +243,7 @@ class MicroserviceTest(TestCase):
     #    test300_971 test with grid containing LT 81 entries
     #    test300_981 test where calculated integrity does not match parm['integrity']
     #    test300_991 test with missing integrity value
+    #    test300_902 test inserting into hint cell
     #
     
     def test300_900ShouldErrWhenCellStringLengthIsNotFour(self):
@@ -382,7 +383,7 @@ class MicroserviceTest(TestCase):
     def test300_990ShouldErrWhenValueIsLT1(self):
         parms = {}
         parms['op'] = 'insert'
-        parms['cell'] = "r1c3"
+        parms['cell'] = "r2c3"
         parms['value'] = "0"
         parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
@@ -397,7 +398,7 @@ class MicroserviceTest(TestCase):
     def test300_901ShouldErrWhenValueIsGT9(self):
         parms = {}
         parms['op'] = 'insert'
-        parms['cell'] = "r1c3"
+        parms['cell'] = "r2c3"
         parms['value'] = "10"
         parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
@@ -412,7 +413,7 @@ class MicroserviceTest(TestCase):
     def test300_911ShouldErrWhenValueIsEmpty(self):
         parms = {}
         parms['op'] = 'insert'
-        parms['cell'] = "r1c3"
+        parms['cell'] = "r2c3"
         parms['value'] = ""
         parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
@@ -427,7 +428,7 @@ class MicroserviceTest(TestCase):
     def test300_921ShouldErrWhenValueIsString(self):
         parms = {}
         parms['op'] = 'insert'
-        parms['cell'] = "r1c3"
+        parms['cell'] = "r2c3"
         parms['value'] = "one"
         parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
@@ -442,7 +443,7 @@ class MicroserviceTest(TestCase):
     def test300_931ShouldErrWhenValueIsFloat(self):
         parms = {}
         parms['op'] = 'insert'
-        parms['cell'] = "r1c3"
+        parms['cell'] = "r2c3"
         parms['value'] = "1.0"
         parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
@@ -457,7 +458,7 @@ class MicroserviceTest(TestCase):
     def test300_941ShouldErrWhenGridIsMissing(self):
         parms = {}
         parms['op'] = 'insert'
-        parms['cell'] = "r1c3"
+        parms['cell'] = "r2c3"
         parms['value'] = "1"
         parms['integrity'] = '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5'
         actualResult = self.microservice(parms)
@@ -467,7 +468,7 @@ class MicroserviceTest(TestCase):
     def test300_951ShouldErrWhenGridContainsIllegalValue(self):
         parms = {}
         parms['op'] = 'insert'
-        parms['cell'] = "r1c3"
+        parms['cell'] = "r2c3"
         parms['value'] = "1"
         parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 'b', 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
@@ -482,7 +483,7 @@ class MicroserviceTest(TestCase):
     def test300_961ShouldErrWhenGridContainsLT81Entries(self):
         parms = {}
         parms['op'] = 'insert'
-        parms['cell'] = "r1c3"
+        parms['cell'] = "r2c3"
         parms['value'] = "1"
         parms['grid'] = [-1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
@@ -497,7 +498,7 @@ class MicroserviceTest(TestCase):
     def test300_971ShouldErrWhenGridContainsGT81Entries(self):
         parms = {}
         parms['op'] = 'insert'
-        parms['cell'] = "r1c3"
+        parms['cell'] = "r2c3"
         parms['value'] = "1"
         parms['grid'] = [-8, 0, 0, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
@@ -512,7 +513,7 @@ class MicroserviceTest(TestCase):
     def test300_981ShouldErrWhenGIntegrityDoesNotMatch(self):
         parms = {}
         parms['op'] = 'insert'
-        parms['cell'] = "r1c1"
+        parms['cell'] = "r2c3"
         parms['value'] = "1"
         parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
@@ -524,7 +525,21 @@ class MicroserviceTest(TestCase):
         self.assertEqual(len(actualResult), 1)
         self.assertEqual('error: integrity mismatch', actualResult['status'])
         
-    def test300_991ShouldErrWhenGIntegrityIsMissing(self):
+    def test300_991ShouldErrWhenIntegrityIsMissing(self):
+        parms = {}
+        parms['op'] = 'insert'
+        parms['cell'] = "r2c3"
+        parms['value'] = "1"
+        parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
+                  -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
+                  0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, 
+                  -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, 
+                  -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 1)
+        self.assertEqual('error: no integrity value given', actualResult['status'])
+        
+    def test300_902ShouldErrWhenInsertingIntoHintCell(self):
         parms = {}
         parms['op'] = 'insert'
         parms['cell'] = "r1c1"
@@ -536,6 +551,7 @@ class MicroserviceTest(TestCase):
                   -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]
         actualResult = self.microservice(parms)
         self.assertEqual(len(actualResult), 1)
-        self.assertEqual('error: no integrity value given', actualResult['status'])
+        self.assertEqual('error: attempted to change fixed hint', actualResult['status'])
         
-    
+    # Happy path analysis:
+    #    test300_100 

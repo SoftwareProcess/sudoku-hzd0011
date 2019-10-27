@@ -105,7 +105,7 @@ def calculateHash(grid):
 
 def insertValue(grid, value, row, col):
     gridArray = json.loads(grid)
-    indexInGrid = (9 * (row - 1)) + (col - 1)
+    indexInGrid = (9 * (row - 1)) + col
     gridArray[indexInGrid - 1] = value
     return gridArray
 

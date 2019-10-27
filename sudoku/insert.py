@@ -85,7 +85,7 @@ def _isValueInSubgrid(grid, value, row, column):
             gridIndex+=1
     for rowIndex in range(row - 1, row + 2):
         for columnIndex in range(column - 1, column + 2):
-            subGridArray.append(matrix[rowIndex, columnIndex])
+            subGridArray.append(matrix[rowIndex][columnIndex])
     for entry in subGridArray:
         if(math.fabs(entry) == math.fabs(value)):
             isInSubgrid = True  

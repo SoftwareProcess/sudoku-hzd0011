@@ -97,13 +97,14 @@ def insertValue(grid, value, row, col):
 def _isValueInRow(grid, value, row):
     matrix = [[0 for rowNum in range(9)] for colNum in range(9)]
     isInRow = False
+    gridArray = json.loads(grid)
     gridIndex = 0
     for rowIndex in range(9):
         for columnIndex in range(9):
-            matrix[rowIndex][columnIndex] = grid[gridIndex]
+            matrix[rowIndex][columnIndex] = gridArray[gridIndex]
             gridIndex+=1
     for entry in matrix[row - 1]:
-        if (math.fabs(entry) == math.fabs(value)):
+        if (math.fabs(int(entry)) == math.fabs(value)):
             isInRow = True 
             return isInRow
     return isInRow

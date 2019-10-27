@@ -72,11 +72,11 @@ def isValidGrid(grid):
 def calculateHash(grid):
     matrix = [[0 for rowNum in range(9)] for colNum in range(9)]
     strToBeHashed = ""
-    
+    gridArray = json.loads(grid)
     gridIndex = 0
     for rowIndex in range(9):
         for columnIndex in range(9):
-            matrix[rowIndex][columnIndex] = grid[gridIndex]
+            matrix[rowIndex][columnIndex] = gridArray[gridIndex]
             gridIndex+=1
    
     for columnIndex in range(9):

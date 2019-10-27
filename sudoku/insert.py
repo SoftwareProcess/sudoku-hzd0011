@@ -71,6 +71,13 @@ def _insert(parms):
         result['status'] = 'error: invalid value'
         return result
     valueToInsert = int(parms['value'])
+    if(_isValueInSubgrid(parms['grid'], valueToInsert, rowNumber, columnNumber)):
+        returnGrid = insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
+        gridToHash = json.dumps(returnGrid)
+        result['grid'] = returnGrid
+        result['integrity'] = calculateHash(gridToHash)
+        result['status'] = 'warning'
+        return result 
     if (_isValueInRow(parms['grid'], valueToInsert, rowNumber)):
         returnGrid = insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
         gridToHash = json.dumps(returnGrid)

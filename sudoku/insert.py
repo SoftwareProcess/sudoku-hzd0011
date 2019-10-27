@@ -74,5 +74,20 @@ def _isValueInColumn(grid, value, column):
             return isInColumn
     return isInColumn
 
-def _isValueInSubgrid(grid, value, row, col):
-    pass
+def _isValueInSubgrid(grid, value, row, column):
+    subGridArray = []
+    matrix = [[0 for rowNum in range(9)] for colNum in range(9)]
+    isInSubgrid = False 
+    gridIndex = 0
+    for rowIndex in range(9):
+        for columnIndex in range(9):
+            matrix[rowIndex][columnIndex] = grid[gridIndex]
+            gridIndex+=1
+    for rowIndex in range(row - 1, row + 2):
+        for columnIndex in range(column - 1, column + 2):
+            subGridArray.append(matrix[rowIndex, columnIndex])
+    for entry in subGridArray:
+        if(math.fabs(entry) == math.fabs(value)):
+            isInSubgrid = True  
+            return isInSubgrid
+    return isInSubgrid

@@ -78,6 +78,13 @@ def _insert(parms):
         result['integrity'] = calculateHash(gridToHash)
         result['status'] = 'warning'
         return result
+    if (_isValueInColumn(parms['grid'], valueToInsert, columnNumber)):
+        returnGrid = insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
+        gridToHash = json.dumps(returnGrid)
+        result['grid'] = returnGrid
+        result['integrity'] = calculateHash(gridToHash)
+        result['status'] = 'warning'
+        return result
     returnGrid = insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
     gridToHash = json.dumps(returnGrid)
     result['grid'] = returnGrid

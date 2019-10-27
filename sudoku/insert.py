@@ -134,7 +134,6 @@ def _calculateHash(grid):
         for columnIndex in range(9):
             matrix[rowIndex][columnIndex] = gridArray[gridIndex]
             gridIndex+=1
-   
     for columnIndex in range(9):
         for rowIndex in range(9):
             strToBeHashed += str(matrix[rowIndex][columnIndex])

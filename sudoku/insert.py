@@ -1,3 +1,11 @@
+'''
+    Created on Oct 26, 2019
+    
+    @author: Hunter Donald hzd0011
+    
+    Production code for _insert
+'''
+
 import hashlib
 import math
 import json
@@ -39,13 +47,13 @@ def _insert(parms):
     if (not('grid' in parms)):
         result['status'] = 'error: missing grid'
         return result
-    if (isValidGrid(parms['grid']) == False):
+    if (_isValidGrid(parms['grid']) == False):
         result['status'] = 'error: invalid grid'
         return result
     if (not('integrity' in parms)):
         result['status'] = 'error: no integrity value given'
         return result
-    calculatedIntegrity = calculateHash(parms['grid'])
+    calculatedIntegrity = _calculateHash(parms['grid'])
     if (calculatedIntegrity != parms['integrity']):
         result['status'] = 'error: integrity mismatch'
         return result
@@ -55,11 +63,11 @@ def _insert(parms):
         result['status'] = 'error: attempted to change fixed hint'
         return result
     if (not('value' in parms)):
-        returnGrid = insertValue(parms['grid'], 0, rowNumber, columnNumber)
+        returnGrid = _insertValue(parms['grid'], 0, rowNumber, columnNumber)
         result['grid'] = returnGrid
         result['status'] = 'ok'
         gridToHash = json.dumps(returnGrid)
-        result['integrity'] = calculateHash(gridToHash)
+        result['integrity'] = _calculateHash(gridToHash)
         return result
     if (parms['value'].find(".") > -1):
         result['status'] = 'error: invalid value'
@@ -78,34 +86,34 @@ def _insert(parms):
         return result
     valueToInsert = int(parms['value'])
     if(_isValueInSubgrid(parms['grid'], valueToInsert, rowNumber, columnNumber)):
-        returnGrid = insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
+        returnGrid = _insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
         gridToHash = json.dumps(returnGrid)
         result['grid'] = returnGrid
-        result['integrity'] = calculateHash(gridToHash)
+        result['integrity'] = _calculateHash(gridToHash)
         result['status'] = 'warning'
         return result 
     if (_isValueInRow(parms['grid'], valueToInsert, rowNumber)):
-        returnGrid = insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
+        returnGrid = _insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
         gridToHash = json.dumps(returnGrid)
         result['grid'] = returnGrid
-        result['integrity'] = calculateHash(gridToHash)
+        result['integrity'] = _calculateHash(gridToHash)
         result['status'] = 'warning'
         return result
     if (_isValueInColumn(parms['grid'], valueToInsert, columnNumber)):
-        returnGrid = insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
+        returnGrid = _insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
         gridToHash = json.dumps(returnGrid)
         result['grid'] = returnGrid
-        result['integrity'] = calculateHash(gridToHash)
+        result['integrity'] = _calculateHash(gridToHash)
         result['status'] = 'warning'
         return result
-    returnGrid = insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
+    returnGrid = _insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
     gridToHash = json.dumps(returnGrid)
     result['grid'] = returnGrid
-    result['integrity'] = calculateHash(gridToHash)
+    result['integrity'] = _calculateHash(gridToHash)
     result['status'] = 'ok'
     return result
 
-def isValidGrid(grid):
+def _isValidGrid(grid):
     isGrid = True
     for entry in grid:
         if (entry.isalpha()):
@@ -117,7 +125,7 @@ def isValidGrid(grid):
         return isGrid
     return isGrid
 
-def calculateHash(grid):
+def _calculateHash(grid):
     matrix = [[0 for rowNum in range(9)] for colNum in range(9)]
     strToBeHashed = ""
     gridArray = json.loads(grid)
@@ -136,7 +144,7 @@ def calculateHash(grid):
     strToReturn = hashValue.hexdigest()
     return strToReturn
 
-def insertValue(grid, value, row, col):
+def _insertValue(grid, value, row, col):
     gridArray = json.loads(grid)
     indexInGrid = (9 * (row - 1)) + col
     gridArray[indexInGrid - 1] = value

@@ -244,6 +244,7 @@ class MicroserviceTest(TestCase):
     #    test300_981 test where calculated integrity does not match parm['integrity']
     #    test300_991 test with missing integrity value
     #    test300_902 test inserting into hint cell
+    #    test300_903 test with invalid cell string 
     #
     
     def test300_900ShouldErrWhenCellStringLengthIsNotFour(self):
@@ -648,7 +649,7 @@ class MicroserviceTest(TestCase):
         self.assertEqual('warning', actualResult['status'])
         self.assertEqual(expectedGrid, actualResult['grid'])
         
-    def test300_120ShouldReturnValidGridWithWarningStatusIfAlreadyInColumn(self):
+    def test300_130ShouldReturnValidGridWithWarningStatusIfAlreadyInColumn(self):
         parms = {}
         parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
@@ -672,7 +673,7 @@ class MicroserviceTest(TestCase):
         self.assertEqual('warning', actualResult['status'])
         self.assertEqual(expectedGrid, actualResult['grid'])
         
-    def test300_130ShouldReturnValidGridWithWarningStatusIfAlreadyInSubgrid(self):
+    def test300_140ShouldReturnValidGridWithWarningStatusIfAlreadyInSubgrid(self):
         parms = {}
         parms['grid'] = [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 
                          0, 0, 0, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 

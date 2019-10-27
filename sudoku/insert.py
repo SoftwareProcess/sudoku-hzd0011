@@ -23,6 +23,9 @@ def _insert(parms):
     if (parms['cell'][3].isalpha() or parms['cell'][3].isspace()):
         result['status'] = 'error: invalid cell reference'
         return result 
+    if (parms['level'].isalpha() or parms['level'].isspace()):
+        result['status'] = 'error: invalid value'
+        return result
     if (int(parms['cell'][1]) < 1):
         result['status'] = 'error: invalid cell reference'
         return result

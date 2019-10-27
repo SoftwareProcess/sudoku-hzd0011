@@ -29,6 +29,9 @@ def _insert(parms):
     if (int(parms['cell'][3]) < 1):
         result['status'] = 'error: invalid cell reference'
         return result
+    if (len(parms['value']) == 0):
+        result['status'] = 'error: invalid value'
+        return result
     if (int(parms['value']) < 1):
         result['status'] = 'error: invalid value'
         return result

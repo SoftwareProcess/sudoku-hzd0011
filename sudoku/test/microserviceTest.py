@@ -448,3 +448,13 @@ class MicroserviceTest(TestCase):
         actualResult = self.microservice(parms)
         self.assertEqual(len(actualResult), 1)
         self.assertIn(actualResult['status'][0:5], 'error:')
+        
+    def test300_941ShouldErrWhenGridIsMissing(self):
+        parms = {}
+        parms['op'] = 'insert'
+        parms['cell'] = "r1c3"
+        parms['value'] = "1"
+        parms['integrity'] = '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5'
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 1)
+        self.assertIn(actualResult['status'][0:5], 'error:')

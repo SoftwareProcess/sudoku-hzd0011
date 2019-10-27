@@ -5,6 +5,10 @@ def _insert(parms):
     result = {'status': 'insert stub'}
     if (len(parms['cell']) != 4):
         result['status'] = 'error: invalid cell reference'
+        return result
+    if (parms['cell'][1] < 1):
+        result['status'] = 'error: invalid cell reference'
+        return result
     return result
 
 def isValidGrid(grid):

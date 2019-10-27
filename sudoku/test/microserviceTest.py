@@ -559,7 +559,7 @@ class MicroserviceTest(TestCase):
     #    test300_110 test inserting value that is not in row, column, or subgrid (no warning status)
     #    test300_120 test inserting value that is already in row (warning status)
     #    test300_130 test inserting value that is already in column (warning status)
-    #    test300_140 test inserting value that is already in sub-grid
+    #    test300_140 test inserting value that is already in sub-grid (warning status)
     #
     #
     

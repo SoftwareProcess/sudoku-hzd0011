@@ -197,3 +197,6 @@ def _isCellAHint(grid, row, column):
         isHint = True 
         return isHint
     return isHint
+
+def _whichSubgrid(grid, row, column):
+    pass

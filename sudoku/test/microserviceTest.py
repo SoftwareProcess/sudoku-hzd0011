@@ -672,7 +672,7 @@ class MicroserviceTest(TestCase):
         parms['op'] = 'insert'
         parms['cell'] = "R3c3"
         parms['value'] = "2"
-        parms['integrity'] = '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5'
+        parms['integrity'] = '110a79143bc7c2b66faff5e8fe895320d402e4f91dbbe6b969931228abb84242'
         actualResult = self.microservice(parms)
         self.assertEqual(len(actualResult), 3)
         self.assertIn('status', actualResult)

@@ -51,6 +51,9 @@ def _insert(parms):
     if (isValidGrid(parms['grid']) == False):
         result['status'] = 'error: invalid grid'
         return result
+    if (not('integrity' in parms)):
+        result['status'] = 'error: no integrity value given'
+        return result
     calculatedIntegrity = calculateHash(parms['grid'])
     if (calculatedIntegrity != parms['integrity']):
         result['status'] = 'error: integrity mismatch'

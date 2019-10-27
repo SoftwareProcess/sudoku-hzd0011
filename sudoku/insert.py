@@ -9,6 +9,9 @@ def _insert(parms):
     if (int(parms['cell'][1]) < 1):
         result['status'] = 'error: invalid cell reference'
         return result
+    if (int(parms['cell'][3]) < 1):
+        result['status'] = 'error: invalid cell reference'
+        return result
     return result
 
 def isValidGrid(grid):

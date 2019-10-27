@@ -6,6 +6,9 @@ def _insert(parms):
     if (not('cell' in parms)):
         result['status'] = 'error: missing cell reference'
         return result
+    if (not('grid' in parms)):
+        result['status'] = 'error: missing grid'
+        return result
     if (len(parms['cell']) != 4):
         result['status'] = 'error: invalid cell reference'
         return result

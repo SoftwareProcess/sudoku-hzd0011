@@ -232,7 +232,12 @@ class MicroserviceTest(TestCase):
     #    test300_960 test with invalid cell string
     #    test300_970 test with missing cell parm
     #    test300_980 test with empty cell string
-    #
+    #    test300_990 test inserting value LT 1
+    #    test300_901 test inserting value GT 9
+    #    test300_911 test inserting empty value
+    #    test300_921 test inserting string value
+    #    test300_931 test inserting float value
+    #    test300_941 test inserting with missing grid
     #
     
     def test300_900ShouldErrWhenCellStringLengthIsNotFour(self):
@@ -359,6 +364,21 @@ class MicroserviceTest(TestCase):
         parms['op'] = 'insert'
         parms['cell'] = ""
         parms['value'] = "3"
+        parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
+                  -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
+                  0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, 
+                  -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, 
+                  -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]
+        parms['integrity'] = '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5'
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 1)
+        self.assertIn(actualResult['status'][0:5], 'error:')
+        
+    def test300_990ShouldErrWhenValueIsLT1(self):
+        parms = {}
+        parms['op'] = 'insert'
+        parms['cell'] = "r1c3"
+        parms['value'] = "0"
         parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
                   0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, 

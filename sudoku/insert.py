@@ -1,20 +1,11 @@
 import hashlib
 import math
+import json
 
 def _insert(parms):
     result = {'status': 'insert stub'}
     if (not('cell' in parms)):
         result['status'] = 'error: missing cell reference'
-        return result
-    if (not('grid' in parms)):
-        result['status'] = 'error: missing grid'
-        return result
-    if (not(isValidGrid(parms['grid']))):
-        result['status'] = 'error: invalid grid'
-        return result
-    calculatedIntegrity = calculateHash(parms['grid'])
-    if (calculatedIntegrity != parms['integrity']):
-        result['status'] = 'error: integrity mismatch'
         return result
     if (len(parms['cell']) != 4):
         result['status'] = 'error: invalid cell reference'
@@ -54,19 +45,28 @@ def _insert(parms):
     if (int(parms['value']) > 9):
         result['status'] = 'error: invalid value'
         return result
+    if (not('grid' in parms)):
+        result['status'] = 'error: missing grid'
+        return result
+    if (isValidGrid(parms['grid']) == False):
+        result['status'] = 'error: invalid grid'
+        return result
+    calculatedIntegrity = calculateHash(parms['grid'])
+    if (calculatedIntegrity != parms['integrity']):
+        result['status'] = 'error: integrity mismatch'
+        return result
     return result
 
 def isValidGrid(grid):
     isGrid = True
-    if (len(grid) > 81):
-        isGrid = False
-        return isGrid
-    if (len(grid) < 81):
-        isGrid = False
-        return isGrid
-    for gridIndex in range(81):
-        if (not(isinstance(grid[gridIndex], int))):
+    for entry in grid:
+        if (entry.isalpha()):
             isGrid = False
+            return isGrid
+    gridArray = json.loads(grid)
+    if (len(gridArray) != 81):
+        isGrid = False 
+        return isGrid
     return isGrid
 
 def calculateHash(grid):

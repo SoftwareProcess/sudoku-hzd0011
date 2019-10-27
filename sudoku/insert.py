@@ -24,26 +24,11 @@ def _insert(parms):
     if (parms['cell'][3].isalpha() or parms['cell'][3].isspace()):
         result['status'] = 'error: invalid cell reference'
         return result 
-    if (parms['value'].isalpha() or parms['value'].isspace()):
-        result['status'] = 'error: invalid value'
-        return result
-    if (parms['value'].find(".") > -1):
-        result['status'] = 'error: invalid value'
-        return result
     if (int(parms['cell'][1]) < 1):
         result['status'] = 'error: invalid cell reference'
         return result
     if (int(parms['cell'][3]) < 1):
         result['status'] = 'error: invalid cell reference'
-        return result
-    if (len(parms['value']) == 0):
-        result['status'] = 'error: invalid value'
-        return result
-    if (int(parms['value']) < 1):
-        result['status'] = 'error: invalid value'
-        return result
-    if (int(parms['value']) > 9):
-        result['status'] = 'error: invalid value'
         return result
     if (not('grid' in parms)):
         result['status'] = 'error: missing grid'
@@ -67,7 +52,23 @@ def _insert(parms):
         returnGrid = insertValue(parms['grid'], 0, rowNumber, columnNumber)
         result['grid'] = returnGrid
         result['status'] = 'ok'
-        result['integrity'] = calculateHash(json.dumps(returnGrid))
+        gridToHash = json.dumps(returnGrid)
+        result['integrity'] = calculateHash(gridToHash)
+        return result
+    if (parms['value'].find(".") > -1):
+        result['status'] = 'error: invalid value'
+        return result
+    if (parms['value'].isalpha() or parms['value'].isspace()):
+        result['status'] = 'error: invalid value'
+        return result
+    if (parms['value'] == ""):
+        result['status'] = 'error: invalid value'
+        return result
+    if (int(parms['value']) < 1):
+        result['status'] = 'error: invalid value'
+        return result
+    if (int(parms['value']) > 9):
+        result['status'] = 'error: invalid value'
         return result
     return result
 
@@ -104,7 +105,7 @@ def calculateHash(grid):
 
 def insertValue(grid, value, row, col):
     gridArray = json.loads(grid)
-    indexInGrid = (9 * (row - 1)) + col
+    indexInGrid = (9 * (row - 1)) + (col - 1)
     gridArray[indexInGrid - 1] = value
     return gridArray
 

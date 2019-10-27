@@ -574,8 +574,8 @@ class MicroserviceTest(TestCase):
         parms['integrity'] = '15ca285cf4d2aa62dd4a4cc713e0a3e573c5eeac192f39056b8977c1e4a7f887'
         actualResult = self.microservice(parms)
         self.assertEqual(len(actualResult), 3)
-        self.assertIn('status:', actualResult)
-        self.assertIn('grid:', actualResult)
-        self.assertIn('integrity:', actualResult)
+        self.assertIn('status', actualResult)
+        self.assertIn('grid', actualResult)
+        self.assertIn('integrity', actualResult)
         self.assertEqual(expectedGrid, actualResult['grid'])
         

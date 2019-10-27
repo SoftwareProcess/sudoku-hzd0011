@@ -63,10 +63,12 @@ def _insert(parms):
     if (_isCellAHint(parms['grid'], rowNumber, columnNumber)):
         result['status'] = 'error: attempted to change fixed hint'
         return result
-    returnGrid = insertValue(parms['grid'], rowNumber, columnNumber)
-    result['grid'] = returnGrid
-    result['status'] = 'ok'
-    result['integrity'] = calculateHash(json.dumps(returnGrid))
+    if (not('value' in parms)):
+        returnGrid = insertValue(parms['grid'], 0, rowNumber, columnNumber)
+        result['grid'] = returnGrid
+        result['status'] = 'ok'
+        result['integrity'] = calculateHash(json.dumps(returnGrid))
+        return result
     return result
 
 def isValidGrid(grid):

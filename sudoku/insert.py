@@ -58,6 +58,11 @@ def _insert(parms):
     if (calculatedIntegrity != parms['integrity']):
         result['status'] = 'error: integrity mismatch'
         return result
+    rowNumber = int(parms['cell'][1])
+    columnNumber = int(parms['cell'][3])
+    if (_isCellAHint(parms['grid'], rowNumber, columnNumber)):
+        result['status'] = 'error: attempted to change fixed hint'
+        return result
     return result
 
 def isValidGrid(grid):

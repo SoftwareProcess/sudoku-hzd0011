@@ -231,3 +231,6 @@ def _whichSubgrid(grid, row, column):
             subgrid = 9
             return subgrid 
     return subgrid
+
+def _returnSubgrid(grid, subgrid):
+    pass

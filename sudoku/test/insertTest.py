@@ -193,6 +193,8 @@ class InsertTest(TestCase):
         
     # Unit tests for _whichSubgrid()
     #    test800_100 test corner of a subgrid
+    #    test800_110 test middle of subgrid
+    #
     
     def test800_100ShouldReturnTheCorrectSubgridForCoordinates(self):
         grid = [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, -2, 0, -1, 0, 0, -3, 0, 0, -5, 0, -4, 0, 0, -6, 0, 0, 0, 0, 0]
@@ -208,5 +210,15 @@ class InsertTest(TestCase):
         column = 8
         expectedResult = 6
         actualResult = sudoku._whichSubgrid(grid, row, column)
+        self.assertEqual(expectedResult, actualResult)
+        
+    # Unit tests for _returnSubgrid()
+    #    test900_100 test valid grid and subgrid
+    
+    def test900_100ShouldReturnCorrect3x3Subgrid(self):
+        grid = [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, -2, 0, -1, 0, 0, -3, 0, 0, -5, 0, -4, 0, 0, -6, 0, 0, 0, 0, 0]
+        subgrid = 7
+        expectedResult = [0, 0, 0, 0, 1, 0, 4, 0, 0]
+        actualResult = sudoku._returnSubgird(grid, subgrid)
         self.assertEqual(expectedResult, actualResult)
         

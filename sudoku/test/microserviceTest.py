@@ -556,6 +556,7 @@ class MicroserviceTest(TestCase):
         
     # Happy path analysis:
     #    test300_100 test removing value from cell
+    #    test300_110 test inserting value that is not in row, column, or subgrid (no warning)
     
     def test300_100ShouldReturnGridWithZeroInserted(self):
         parms = {}
@@ -577,5 +578,29 @@ class MicroserviceTest(TestCase):
         self.assertIn('status', actualResult)
         self.assertIn('grid', actualResult)
         self.assertIn('integrity', actualResult)
+        self.assertEqual(expectedGrid, actualResult['grid'])
+        
+    def test300_110ShouldReturnValidGridWithOkStatus(self):
+        parms = {}
+        parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
+                  -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
+                  0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, 
+                  -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, 
+                  -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]
+        expectedGrid = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
+                  -7, 0, 0, 7, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
+                  0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, 
+                  -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, 
+                  -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]
+        parms['op'] = 'insert'
+        parms['cell'] = "R3c2"
+        parms['value'] = "7"
+        parms['integrity'] = '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5'
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 3)
+        self.assertIn('status', actualResult)
+        self.assertIn('grid', actualResult)
+        self.assertIn('integrity', actualResult)
+        self.assertEqual('ok', actualResult['status'])
         self.assertEqual(expectedGrid, actualResult['grid'])
         

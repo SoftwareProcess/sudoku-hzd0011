@@ -154,7 +154,7 @@ def _isCellAHint(grid, row, column):
     isHint = False
     gridArray = json.loads(grid)
     indexInGrid = (9 * (row - 1)) + column
-    if (gridArray[indexInGrid] < 0):
+    if (int(gridArray[indexInGrid]) < 0):
         isHint = True 
         return isHint
     return isHint

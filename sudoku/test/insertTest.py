@@ -195,7 +195,7 @@ class InsertTest(TestCase):
         value = 7
         row = 2
         column = 3
-        expectedResult = False 
+        expectedResult = False
         actualResult = sudoku._isValueInSubgrid(grid, value, row, column)
         self.assertEqual(expectedResult, actualResult)
         

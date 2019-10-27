@@ -10,10 +10,12 @@ def _insert(parms):
     if (len(parms['cell']) != 4):
         result['status'] = 'error: invalid cell reference'
         return result
-    for cellIndex in range(4):
-        if (not(parms['cell'][cellIndex].isalpha) or not(parms['cell'][cellIndex].isnumeric())):
-            result['status'] = 'error: invalid cell reference'
-            return result
+    if (not(parms['cell'][1].isnumeric())):
+        result['status'] = 'error: invalid cell reference'
+        return result
+    if (not(parms['cell'][3].isnumeric())):
+        result['status'] = 'error: invalid cell reference'
+        return result
     if (parms['cell'][0] != 'r'):
         if (parms['cell'][0] != 'R'):
             result['status'] = 'error: invalid cell reference'

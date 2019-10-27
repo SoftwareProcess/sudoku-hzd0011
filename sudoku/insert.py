@@ -3,6 +3,9 @@ import math
 
 def _insert(parms):
     result = {'status': 'insert stub'}
+    if (not('cell' in parms)):
+        result['status'] = 'error: missing cell reference'
+        return result
     if (len(parms['cell']) != 4):
         result['status'] = 'error: invalid cell reference'
         return result

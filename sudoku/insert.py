@@ -11,7 +11,11 @@ def _insert(parms):
         return result
     if (not(isValidGrid(parms['grid']))):
         result['status'] = 'error: invalid grid'
-        return result 
+        return result
+    calculatedIntegrity = calculateHash(parms['grid'])
+    if (calculatedIntegrity != parms['integrity']):
+        result['status'] = 'error: integrity mismatch'
+        return result
     if (len(parms['cell']) != 4):
         result['status'] = 'error: invalid cell reference'
         return result

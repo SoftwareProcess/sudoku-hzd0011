@@ -70,6 +70,12 @@ def _insert(parms):
     if (int(parms['value']) > 9):
         result['status'] = 'error: invalid value'
         return result
+    valueToInsert = int(parms['value'])
+    returnGrid = insertValue(parms['grid'], valueToInsert, rowNumber, columnNumber)
+    gridToHash = json.dumps(returnGrid)
+    result['grid'] = returnGrid
+    result['integrity'] = calculateHash(gridToHash)
+    result['status'] = 'ok'
     return result
 
 def isValidGrid(grid):

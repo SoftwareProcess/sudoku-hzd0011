@@ -657,3 +657,27 @@ class MicroserviceTest(TestCase):
         self.assertEqual('warning', actualResult['status'])
         self.assertEqual(expectedGrid, actualResult['grid'])
         
+    def test300_130ShouldReturnValidGridWithWarningStatusIfAlreadyInSubgrid(self):
+        parms = {}
+        parms['grid'] = [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 
+                         0, 0, 0, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 
+                         0, 0, -4, 0, 0, 0, 0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 
+                         0, 0, 0, 0, -7, 0, 0, -2, 0, -1, 0, 0, -3, 0, 0, -5, 0, -4, 
+                         0, 0, -6, 0, 0, 0, 0, 0]
+        expectedGrid = [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 
+                         0, 0, 2, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 
+                         0, 0, -4, 0, 0, 0, 0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 
+                         0, 0, 0, 0, -7, 0, 0, -2, 0, -1, 0, 0, -3, 0, 0, -5, 0, -4, 
+                         0, 0, -6, 0, 0, 0, 0, 0]
+        parms['op'] = 'insert'
+        parms['cell'] = "R3c3"
+        parms['value'] = "2"
+        parms['integrity'] = '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5'
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 3)
+        self.assertIn('status', actualResult)
+        self.assertIn('grid', actualResult)
+        self.assertIn('integrity', actualResult)
+        self.assertEqual('warning', actualResult['status'])
+        self.assertEqual(expectedGrid, actualResult['grid'])
+        

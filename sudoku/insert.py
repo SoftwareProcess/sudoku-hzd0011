@@ -89,9 +89,10 @@ def calculateHash(grid):
     return strToReturn
 
 def insertValue(grid, value, row, col):
+    gridArray = json.loads(grid)
     indexInGrid = (9 * (row - 1)) + col
-    grid[indexInGrid - 1] = value
-    return grid
+    gridArray[indexInGrid - 1] = value
+    return gridArray
 
 def _isValueInRow(grid, value, row):
     matrix = [[0 for rowNum in range(9)] for colNum in range(9)]

@@ -537,3 +537,5 @@ class MicroserviceTest(TestCase):
         actualResult = self.microservice(parms)
         self.assertEqual(len(actualResult), 1)
         self.assertEqual('error: no integrity value given', actualResult['status'])
+        
+    

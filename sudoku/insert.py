@@ -150,5 +150,11 @@ def _isValueInSubgrid(grid, value, row, column):
             return isInSubgrid
     return isInSubgrid
 
-def isCellAHint(grid, row, column):
-    pass
+def _isCellAHint(grid, row, column):
+    isHint = False
+    gridArray = json.loads(grid)
+    indexInGrid = (9 * (row - 1)) + column
+    if (gridArray[indexInGrid] < 0):
+        isHint = True 
+        return isHint
+    return isHint

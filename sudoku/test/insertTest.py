@@ -148,5 +148,5 @@ class InsertTest(TestCase):
         row = 1
         col = 1
         expectedResult = True 
-        actualResult = sudoku.isCellAHint(grid, row, col)
+        actualResult = sudoku._isCellAHint(grid, row, col)
         self.assertEqual(expectedResult, actualResult)

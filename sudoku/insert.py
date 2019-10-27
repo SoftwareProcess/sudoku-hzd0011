@@ -32,6 +32,9 @@ def _insert(parms):
     if (int(parms['value']) < 1):
         result['status'] = 'error: invalid value'
         return result
+    if (int(parms['value']) > 9):
+        result['status'] = 'error: invalid value'
+        return result
     return result
 
 def isValidGrid(grid):

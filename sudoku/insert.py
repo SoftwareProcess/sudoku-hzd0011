@@ -153,7 +153,7 @@ def _isValueInSubgrid(grid, value, row, column):
 def _isCellAHint(grid, row, column):
     isHint = False
     gridArray = json.loads(grid)
-    indexInGrid = (9 * (row - 1)) + column
+    indexInGrid = (9 * (row - 1)) + (column - 1)
     if (int(gridArray[indexInGrid]) < 0):
         isHint = True 
         return isHint

@@ -523,3 +523,17 @@ class MicroserviceTest(TestCase):
         actualResult = self.microservice(parms)
         self.assertEqual(len(actualResult), 1)
         self.assertEqual('error: integrity mismatch', actualResult['status'])
+        
+    def test300_991ShouldErrWhenGIntegrityIsMissing(self):
+        parms = {}
+        parms['op'] = 'insert'
+        parms['cell'] = "r1c1"
+        parms['value'] = "1"
+        parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
+                  -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
+                  0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, 
+                  -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, 
+                  -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 1)
+        self.assertEqual('error: no integrity value given', actualResult['status'])

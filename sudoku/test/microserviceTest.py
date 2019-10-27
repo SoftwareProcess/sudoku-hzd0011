@@ -44,7 +44,7 @@ class MicroserviceTest(TestCase):
         result = self.microservice(parms)
         self.assertIn('status', result)
         self.assertIn('create', result['status'])
- 
+    @skip
     def test100_020ShouldVerifyInstallOfInsert(self):
         parms = {}
         parms['op'] = 'insert'

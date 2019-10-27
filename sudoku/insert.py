@@ -171,21 +171,13 @@ def _isValueInColumn(grid, value, column):
     return isInColumn
 
 def _isValueInSubgrid(grid, value, row, column):
-    subGridArray = []
     gridArray = json.loads(grid)
-    matrix = [[0 for rowNum in range(9)] for colNum in range(9)]
     isInSubgrid = False 
-    gridIndex = 0
-    for rowIndex in range(9):
-        for columnIndex in range(9):
-            matrix[rowIndex][columnIndex] = gridArray[gridIndex]
-            gridIndex+=1
-    for rowIndex in range(row - 1, row + 2):
-        for columnIndex in range(column - 1, column + 2):
-            subGridArray.append(matrix[rowIndex][columnIndex])
+    subgridNumber = _whichSubgrid(row, column)
+    subGridArray = _returnSubgrid(gridArray, subgridNumber)
     for entry in subGridArray:
-        if(math.fabs(int(entry)) == math.fabs(value)):
-            isInSubgrid = True  
+        if (math.fabs(entry) == math.fabs(value)):
+            isInSubgrid = True 
             return isInSubgrid
     return isInSubgrid
 

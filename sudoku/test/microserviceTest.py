@@ -283,7 +283,7 @@ class MicroserviceTest(TestCase):
     def test300_930ShouldErrWhenFirstCharInCellStringIsNotR(self):
         parms = {}
         parms['op'] = 'insert'
-        parms['cell'] = "e3c0"
+        parms['cell'] = "e3c2"
         parms['value'] = "3"
         parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
                   -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 

@@ -9,6 +9,10 @@ def _insert(parms):
     if (parms['cell'][0] != 'r'):
         if (parms['cell'][0] != 'R'):
             result['status'] = 'error: invalid cell reference'
+            return result
+    if (parms['cell'][2] != 'c'):
+        if (parms['cell'][2] != 'C'):
+            result['status'] = 'error: invalid cell reference'
             return result 
     if (int(parms['cell'][1]) < 1):
         result['status'] = 'error: invalid cell reference'

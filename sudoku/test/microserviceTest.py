@@ -522,4 +522,4 @@ class MicroserviceTest(TestCase):
         parms['integrity'] = '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5'
         actualResult = self.microservice(parms)
         self.assertEqual(len(actualResult), 1)
-        self.assertEqual('error: integrity mismatch', parms['status'])
+        self.assertEqual('error: integrity mismatch', actualResult['status'])

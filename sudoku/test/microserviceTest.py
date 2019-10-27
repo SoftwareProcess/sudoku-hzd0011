@@ -512,7 +512,7 @@ class MicroserviceTest(TestCase):
     def test300_981ShouldErrWhenGIntegrityDoesNotMatch(self):
         parms = {}
         parms['op'] = 'insert'
-        parms['cell'] = "r1c3"
+        parms['cell'] = "r1c1"
         parms['value'] = "1"
         parms['grid'] = [0, -3, 0, 0, 0, -2, 0, -6, -5, -5, -8, 0, -1, -3, -4, 0, -2, 
                   -9, 0, -2, -7, 0, -5, 0, 0, 0, -1, 0, 0, -2, 0, 0, -9, 0, -1, 
@@ -522,4 +522,4 @@ class MicroserviceTest(TestCase):
         parms['integrity'] = '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5'
         actualResult = self.microservice(parms)
         self.assertEqual(len(actualResult), 1)
-        self.assertIn(actualResult['status'][0:5], 'error:')
+        self.assertEqual('error: integrity mismatch', parms['status'])

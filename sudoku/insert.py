@@ -198,7 +198,7 @@ def _isCellAHint(grid, row, column):
         return isHint
     return isHint
 
-def _whichSubgrid(grid, row, column):
+def _whichSubgrid(row, column):
     subgrid = 0
     if (row >= 1 and row < 4):
         if (column >= 1 and column < 4):

@@ -197,19 +197,17 @@ class InsertTest(TestCase):
     #
     
     def test800_100ShouldReturnTheCorrectSubgridForCoordinates(self):
-        grid = [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, -2, 0, -1, 0, 0, -3, 0, 0, -5, 0, -4, 0, 0, -6, 0, 0, 0, 0, 0]
         row = 3
         column = 3
         expectedResult = 1
-        actualResult = sudoku._whichSubgrid(grid, row, column)
+        actualResult = sudoku._whichSubgrid(row, column)
         self.assertEqual(expectedResult, actualResult)
         
     def test800_110ShouldReturnTheCorrectSubgridForCoordinates(self):
-        grid = [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, -2, 0, -1, 0, 0, -3, 0, 0, -5, 0, -4, 0, 0, -6, 0, 0, 0, 0, 0]
         row = 5
         column = 8
         expectedResult = 6
-        actualResult = sudoku._whichSubgrid(grid, row, column)
+        actualResult = sudoku._whichSubgrid(row, column)
         self.assertEqual(expectedResult, actualResult)
         
     # Unit tests for _returnSubgrid()

@@ -238,6 +238,11 @@ class MicroserviceTest(TestCase):
     #    test300_921 test inserting string value
     #    test300_931 test inserting float value
     #    test300_941 test inserting with missing grid
+    #    test300_951 test with grid containing an illegal value
+    #    test300_961 test with grid containing GT 81 entries
+    #    test300_971 test with grid containing LT 81 entries
+    #    test300_981 test where calculated integrity does not match parm['integrity']
+    #    test300_991 test with missing integrity value
     #
     
     def test300_900ShouldErrWhenCellStringLengthIsNotFour(self):
@@ -454,6 +459,21 @@ class MicroserviceTest(TestCase):
         parms['op'] = 'insert'
         parms['cell'] = "r1c3"
         parms['value'] = "1"
+        parms['integrity'] = '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5'
+        actualResult = self.microservice(parms)
+        self.assertEqual(len(actualResult), 1)
+        self.assertIn(actualResult['status'][0:5], 'error:')
+        
+    def test300_951ShouldErrWhenGridContainsIllegalValue(self):
+        parms = {}
+        parms['op'] = 'insert'
+        parms['cell'] = "r1c3"
+        parms['value'] = "1"
+        parms['grid'] = [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, 
+                  -7, 0, 'b', 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 
+                  0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, 
+                  -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, 
+                  -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]
         parms['integrity'] = '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5'
         actualResult = self.microservice(parms)
         self.assertEqual(len(actualResult), 1)

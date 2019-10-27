@@ -6,7 +6,7 @@ def _insert(parms):
     if (len(parms['cell']) != 4):
         result['status'] = 'error: invalid cell reference'
         return result
-    if (parms['cell'][1] < 1):
+    if (int(parms['cell'][1]) < 1):
         result['status'] = 'error: invalid cell reference'
         return result
     return result

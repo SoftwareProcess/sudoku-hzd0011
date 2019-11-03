@@ -97,3 +97,15 @@ class IsdoneTest(TestCase):
         expectedResult = False
         actualResult = sudoku._isValueInColumn(grid, value, column)
         self.assertEqual(expectedResult, actualResult)
+        
+    # _whichSubgrid() unit tests
+    #    Happy path analysis:
+    #    test600_100 test corner of a subgrid
+    #    test600_110 test middle of a subgrid
+    def test600_100ShouldReturnCorrectSubgridNumberForCellInMiddleOfSubgrid(self):
+        row = 3
+        column = 3
+        expectedResult = 1
+        actualResult = sudoku._whichSubgrid(row, column)
+        self.assertEqual(expectedResult, actualResult)
+        

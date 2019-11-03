@@ -102,6 +102,7 @@ class IsdoneTest(TestCase):
     #    Happy path analysis:
     #    test600_100 test corner of a subgrid
     #    test600_110 test middle of a subgrid
+    #    test600_120 test middle cell in top row of subgrid
     def test600_100ShouldReturnCorrectSubgridNumberForCellInCornerOfSubgrid(self):
         row = 3
         column = 3
@@ -113,6 +114,13 @@ class IsdoneTest(TestCase):
         row = 5
         column = 8
         expectedResult = 6
+        actualResult = sudoku._whichSubgrid(row, column)
+        self.assertEqual(expectedResult, actualResult)
+        
+    def test600_120ShouldReturnCorrectSubgridNumberForCellInMiddleTopPositionOfSubgrid(self):
+        row = 7
+        column = 5
+        expectedResult = 8
         actualResult = sudoku._whichSubgrid(row, column)
         self.assertEqual(expectedResult, actualResult)
         

@@ -1,3 +1,5 @@
+import json
+
 def _isdone(parms):
     result = {'status': 'isdone stub'}
     return result
@@ -17,7 +19,16 @@ def _isSolved(grid):
     pass
 
 def _isValidGrid(grid):
-    pass
+    isGrid = True
+    for entry in grid:
+        if (entry.isalpha()):
+            isGrid = False
+            return isGrid
+    gridArray = json.loads(grid)
+    if (len(gridArray) != 81):
+        isGrid = False 
+        return isGrid
+    return isGrid
 
 def _calculateHash(grid):
     pass

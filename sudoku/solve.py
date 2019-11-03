@@ -1,3 +1,5 @@
+import json
+
 def _solve(parms):
     result = {'status': 'solve stub'}
     return result
@@ -6,7 +8,16 @@ def _suggestSolution(grid):
     pass
 
 def _isValidGrid(grid):
-    pass
+    isGrid = True
+    for entry in grid:
+        if (entry.isalpha()):
+            isGrid = False
+            return isGrid
+    gridArray = json.loads(grid)
+    if (len(gridArray) != 81):
+        isGrid = False 
+        return isGrid
+    return isGrid
 
 def _calculateHash(grid):
     pass

@@ -7,6 +7,10 @@ def _isdone(parms):
     if (not(_isValidGrid(parms['grid']))):
         result['status'] = 'error: invalid grid'
         return result
+    calculatedIntegrity = _calculateHash(parms['grid'])
+    if (calculatedIntegrity != parms['integrity']):
+        result['status'] = 'error: integrity mismatch'
+        return result
     return result
 
 def _isCompleted(grid):

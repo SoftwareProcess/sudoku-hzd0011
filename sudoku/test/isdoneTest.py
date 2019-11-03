@@ -133,3 +133,18 @@ class IsdoneTest(TestCase):
         expectedResult = [0, 0, 0, 0, -1, 0, -4, 0, 0]
         actualResult = sudoku._returnSubgrid(grid, subgrid)
         self.assertEqual(expectedResult, actualResult)
+        
+    # _isValueInSubgrid() unit tests
+    #    Happy path analysis:
+    #    test800_100 should return true if value is in subgrid
+    #    test800_110 should return false if value is not in subgrid
+    def test800_100ShouldReturnTrueIfValueIsInSubgrid(self):
+        grid = "[-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]"
+        value = 1
+        row = 2
+        column = 3
+        expectedResult = True 
+        actualResult = sudoku._isValueInSubgrid(grid, value, row, column)
+        self.assertEqual(expectedResult, actualResult)
+        
+    

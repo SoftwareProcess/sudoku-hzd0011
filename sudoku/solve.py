@@ -5,6 +5,12 @@ def _solve(parms):
 def _suggestSolution(grid):
     pass
 
+def _isValidGrid(grid):
+    pass
+
+def _calculateHash(grid):
+    pass
+
 def _isCompleted(grid):
     isCompleted = True 
     for entry in grid:

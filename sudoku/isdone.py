@@ -15,7 +15,26 @@ def _isCompleted(grid):
     return isCompleted
 
 def _isGridCompliant(grid):
-    pass
+    gridIsCompliant = True 
+    matrix = [[0 for rowNum in range(9)] for columnNum in range(9)]
+    gridArray = json.loads(grid)
+    gridIndex = 0
+    for rowIndex in range(9):
+        for columnIndex in range(9):
+            matrix[rowIndex][columnIndex] = gridArray[gridIndex]
+            gridIndex+=1
+    for rowIndex in range(1, 10):
+        for columnIndex in range(1, 10):
+            if (_isValueInRow(grid, matrix[rowIndex - 1][columnIndex - 1], rowIndex)):
+                gridIsCompliant = False 
+                return gridIsCompliant
+            if (_isValueInColumn(grid, matrix[rowIndex - 1][columnIndex - 1], columnIndex)):
+                gridIsCompliant = False 
+                return gridIsCompliant
+            if (_isValueInSubgrid(grid, matrix[rowIndex - 1][columnIndex - 1], rowIndex, columnIndex)):
+                gridIsCompliant = False 
+                return gridIsCompliant
+    return gridIsCompliant
 
 def _isSolved(grid):
     pass

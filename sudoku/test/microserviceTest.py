@@ -782,6 +782,7 @@ class MicroserviceTest(TestCase):
                          -6,9,-5,1,3,6,-1,-3,-2,9,5,-4,-8,-7,8,2,
                          -4,6,7,-3,1,9,5,-5,7,9,-8,-1,4,-2,3,6]
         parms['op'] = 'isdone'
+        parms['integrity'] = 'e33e2de2fdbb25aacf25b299e101cccfdd2e1be4284acc257bcdc76737272af6'
         expectedResult = {}
         expectedResult['status'] = 'solved'
         actualResult = self.microservice(parms)

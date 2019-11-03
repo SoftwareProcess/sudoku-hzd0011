@@ -1,4 +1,5 @@
 import json
+import hashlib
 
 def _isdone(parms):
     result = {'status': 'isdone stub'}
@@ -31,7 +32,22 @@ def _isValidGrid(grid):
     return isGrid
 
 def _calculateHash(grid):
-    pass
+    matrix = [[0 for rowNum in range(9)] for colNum in range(9)]
+    strToBeHashed = ""
+    gridArray = json.loads(grid)
+    gridIndex = 0
+    for rowIndex in range(9):
+        for columnIndex in range(9):
+            matrix[rowIndex][columnIndex] = gridArray[gridIndex]
+            gridIndex+=1
+    for columnIndex in range(9):
+        for rowIndex in range(9):
+            strToBeHashed += str(matrix[rowIndex][columnIndex])
+    hashValue = hashlib.sha256()
+    encodedStr = strToBeHashed.encode()
+    hashValue.update(encodedStr)
+    strToReturn = hashValue.hexdigest()
+    return strToReturn
 
 def _isValueInRow(grid, value, row):
     pass

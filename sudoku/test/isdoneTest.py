@@ -60,10 +60,10 @@ class IsdoneTest(TestCase):
         
     # _isValueInRow() unit tests
     #    Happy path analysis:
-    #    test400_100 should return true if value is in row
-    #    test400_110 should return false if value is not in row
+    #    test400_100 should return true if value is in row more than once
+    #    test400_110 should return false if value is not in row more than once
     def test400_100ShouldReturnTrueIfValueIsInRow(self):
-        grid = "[-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]"
+        grid = "[-8, -1, -5, -7, -6, -9, -3, -2, 3, -4, -9, 0, 0, 0, -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]"
         value = 3
         row = 1
         expectedResult = True 
@@ -80,10 +80,10 @@ class IsdoneTest(TestCase):
         
     # _isValueInColumn() unit tests
     #    Happy path analysis:
-    #    test500_100 Should return true if value is in column
-    #    test500_110 Should return false if value is not in column
+    #    test500_100 Should return true if value is in column more than once
+    #    test500_110 Should return false if value is not in column more than once
     def test500_100ShouldReturnTrueIfValueIsInColumn(self):
-        grid = "[-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]"
+        grid = "[-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, -7, 0, 9, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]"
         value = 9
         column = 1
         expectedResult = True 
@@ -136,10 +136,10 @@ class IsdoneTest(TestCase):
         
     # _isValueInSubgrid() unit tests
     #    Happy path analysis:
-    #    test800_100 should return true if value is in subgrid
-    #    test800_110 should return false if value is not in subgrid
+    #    test800_100 should return true if value is in subgrid more than once
+    #    test800_110 should return false if value is not in subgrid more than once
     def test800_100ShouldReturnTrueIfValueIsInSubgrid(self):
-        grid = "[-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]"
+        grid = "[-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, -7, 0, 0, -1, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]"
         value = 1
         row = 2
         column = 3
@@ -164,5 +164,10 @@ class IsdoneTest(TestCase):
         expectedResult = True 
         actualResult = sudoku._isGridCompliant(grid)
         self.assertEqual(expectedResult, actualResult)
-        
+      
+    def test900_110ShouldReturnFalseForGridThatDoesViolateSudoku(self):
+        grid = "[-8, -1, -5, -7, -6, -9, -3, -2, 8, -4, -9, 0, 0, 0, -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]"
+        expectedResult = False 
+        actualResult = sudoku._isGridCompliant(grid)
+        self.assertEqual(expectedResult, actualResult)  
     

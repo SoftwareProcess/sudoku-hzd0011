@@ -75,14 +75,17 @@ def _isValueInRow(grid, value, row):
     isInRow = False
     gridArray = json.loads(grid)
     gridIndex = 0
+    numberOfTimesValueIsInRow = 0
     for rowIndex in range(9):
         for columnIndex in range(9):
             matrix[rowIndex][columnIndex] = gridArray[gridIndex]
             gridIndex+=1
     for entry in matrix[row - 1]:
         if (math.fabs(int(entry)) == math.fabs(value)):
-            isInRow = True 
-            return isInRow
+            numberOfTimesValueIsInRow += 1
+            if (numberOfTimesValueIsInRow > 1):
+                isInRow = True 
+                return isInRow
     return isInRow
 
 def _isValueInColumn(grid, value, column):
@@ -91,6 +94,7 @@ def _isValueInColumn(grid, value, column):
     gridArray = json.loads(grid)
     columnArray = []
     gridIndex = 0
+    numberOfTimesValueIsInColumn = 0
     for rowIndex in range(9):
         for columnIndex in range(9):
             matrix[rowIndex][columnIndex] = gridArray[gridIndex]
@@ -100,19 +104,24 @@ def _isValueInColumn(grid, value, column):
         columnArray.append(matrix[rowIndex][column - 1])
     for entry in columnArray:
         if (math.fabs(int(entry)) == math.fabs(value)):
-            isInColumn = True 
-            return isInColumn
+            numberOfTimesValueIsInColumn += 1
+            if (numberOfTimesValueIsInColumn > 1):
+                isInColumn = True 
+                return isInColumn   
     return isInColumn
 
 def _isValueInSubgrid(grid, value, row, column):
     gridArray = json.loads(grid)
     isInSubgrid = False 
+    numberOfTimesValueIsInSubgrid = 0
     subgridNumber = _whichSubgrid(row, column)
     subGridArray = _returnSubgrid(gridArray, subgridNumber)
     for entry in subGridArray:
         if (math.fabs(entry) == math.fabs(value)):
-            isInSubgrid = True 
-            return isInSubgrid
+            numberOfTimesValueIsInSubgrid += 1
+            if (numberOfTimesValueIsInSubgrid > 1):
+                isInSubgrid = True 
+                return isInSubgrid
     return isInSubgrid
 
 def _whichSubgrid(row, column):

@@ -17,6 +17,9 @@ def _isdone(parms):
     if (calculatedIntegrity != parms['integrity']):
         result['status'] = 'error: integrity mismatch'
         return result
+    if (not(_isGridCompliant(parms['grid']))):
+        result['status'] = 'warning'
+        return result
     if (_isSolved(parms['grid'])):
         result['status'] = 'solved'
         return result

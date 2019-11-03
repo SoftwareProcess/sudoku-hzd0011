@@ -3,7 +3,12 @@ def _isdone(parms):
     return result
 
 def _isCompleted(grid):
-    pass
+    isCompleted = True 
+    for entry in grid:
+        if entry == '0':
+            isCompleted = False 
+            return isCompleted
+    return isCompleted
 
 def _isGridCompliant(grid):
     pass

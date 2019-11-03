@@ -806,4 +806,16 @@ class MicroserviceTest(TestCase):
         actualResult = self.microservice(parms)
         self.assertEqual(expectedResult, actualResult)
         
-        
+    def test400_120ShouldReturnIncompleteStatusOnPartiallySolvedGrid(self):
+        parms = {}
+        parms['grid'] = [4,-5,-8,-9,3,-1,-6,7,2,-2,3,7,-5,-8,6,9,
+                         -4,-1,-9,6,1,7,4,2,3,-5,8,-3,9,-6,-1,-5,
+                         7,8,-2,4,-1,-4,5,0,-2,8,-7,6,-9,7,8,2,4,
+                         -6,9,-5,1,3,6,-1,-3,-2,9,5,-4,-8,-7,8,2,
+                         -4,6,7,-3,1,9,5,-5,7,9,-8,-1,4,-2,3,6]
+        parms['op'] = 'isdone'
+        parms['integrity'] = 'eff5d2ed0d0f00ddd6a502311a588b2319fb0f5a51c03328a61e99cd1bea740f'
+        expectedResult = {}
+        expectedResult['status'] = 'incomplete'
+        actualResult = self.microservice(parms)
+        self.assertEqual(expectedResult, actualResult)

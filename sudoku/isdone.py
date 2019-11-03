@@ -85,7 +85,15 @@ def _isValueInColumn(grid, value, column):
     return isInColumn
 
 def _isValueInSubgrid(grid, value, row, column):
-    pass
+    gridArray = json.loads(grid)
+    isInSubgrid = False 
+    subgridNumber = _whichSubgrid(row, column)
+    subGridArray = _returnSubgrid(gridArray, subgridNumber)
+    for entry in subGridArray:
+        if (math.fabs(entry) == math.fabs(value)):
+            isInSubgrid = True 
+            return isInSubgrid
+    return isInSubgrid
 
 def _whichSubgrid(row, column):
     subgrid = 0

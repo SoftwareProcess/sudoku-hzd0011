@@ -25,15 +25,16 @@ def _isGridCompliant(grid):
             gridIndex+=1
     for rowIndex in range(1, 10):
         for columnIndex in range(1, 10):
-            if (_isValueInRow(grid, matrix[rowIndex - 1][columnIndex - 1], rowIndex)):
-                gridIsCompliant = False 
-                return gridIsCompliant
-            if (_isValueInColumn(grid, matrix[rowIndex - 1][columnIndex - 1], columnIndex)):
-                gridIsCompliant = False 
-                return gridIsCompliant
-            if (_isValueInSubgrid(grid, matrix[rowIndex - 1][columnIndex - 1], rowIndex, columnIndex)):
-                gridIsCompliant = False 
-                return gridIsCompliant
+            if (int(matrix[rowIndex - 1][columnIndex - 1]) != 0):
+                if (_isValueInRow(grid, int(matrix[rowIndex - 1][columnIndex - 1]), rowIndex)):
+                    gridIsCompliant = False 
+                    return gridIsCompliant
+                if (_isValueInColumn(grid, int(matrix[rowIndex - 1][columnIndex - 1]), columnIndex)):
+                    gridIsCompliant = False 
+                    return gridIsCompliant
+                if (_isValueInSubgrid(grid, int(matrix[rowIndex - 1][columnIndex - 1]), rowIndex, columnIndex)):
+                    gridIsCompliant = False 
+                    return gridIsCompliant
     return gridIsCompliant
 
 def _isSolved(grid):

@@ -7,8 +7,23 @@ def _solve(parms):
     return result
 
 def _suggestSolution(grid):
-    pass
-
+    gridArray = json.loads(grid)
+    legalValues = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    emptyArray = []
+    if (_isCompleted(grid) and _isGridCompliant(grid)):
+        return gridArray 
+    elif (_isCompleted(grid) and not(_isGridCompliant(grid))):
+        return emptyArray
+    else:
+        for gridArrayIndex in range(len(gridArray)):    
+            if (gridArray[gridArrayIndex] == 0):
+                break
+        for value in legalValues:
+            gridArray[gridArrayIndex] = value
+            if (len(_suggestSolution(json.dumps(gridArray))) != 0):
+                return gridArray
+        return emptyArray
+    
 def _isValidGrid(grid):
     isGrid = True
     for entry in grid:

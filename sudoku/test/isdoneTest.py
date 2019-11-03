@@ -102,7 +102,7 @@ class IsdoneTest(TestCase):
     #    Happy path analysis:
     #    test600_100 test corner of a subgrid
     #    test600_110 test middle of a subgrid
-    def test600_100ShouldReturnCorrectSubgridNumberForCellInMiddleOfSubgrid(self):
+    def test600_100ShouldReturnCorrectSubgridNumberForCellInCornerOfSubgrid(self):
         row = 3
         column = 3
         expectedResult = 1

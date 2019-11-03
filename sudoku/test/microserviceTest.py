@@ -755,3 +755,16 @@ class MicroserviceTest(TestCase):
         expectedResult['status'] = 'error: missing grid'
         actualResult = self.microservice(parms)
         self.assertEqual(expectedResult, actualResult)
+        
+    def test400_940ShouldErrOnMissingIntegrity(self):
+        parms = {}
+        parms['grid'] = [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 
+                         0, 0, 0, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 
+                         0, 0, -4, 0, 0, 0, 0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 
+                         0, 0, 0, 0, -7, 0, 0, -2, 0, -1, 0, 0, -3, 0, 0, -5, 0, -4, 
+                         0, 0, -6, 0, 0, 0, 0, 0]
+        parms['op'] = 'isdone'
+        expectedResult = {}
+        expectedResult['status'] = 'error: missing integrity'
+        actualResult = self.microservice(parms)
+        self.assertEqual(expectedResult, actualResult)

@@ -3,7 +3,10 @@ import hashlib
 import math
 
 def _isdone(parms):
-    result = {'status': 'isdone stub'}
+    result = {}
+    if (not(_isValidGrid(parms['grid']))):
+        result['status'] = 'error: invalid grid'
+        return result
     return result
 
 def _isCompleted(grid):

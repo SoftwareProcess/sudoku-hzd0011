@@ -184,3 +184,26 @@ class SolveTest(TestCase):
         expectedResult = False 
         actualResult = sudoku._isGridCompliant(grid)
         self.assertEqual(expectedResult, actualResult)
+        
+    # _isSolved() unit tests
+    #    test1000_100 should return true if a grid is solved 
+    #    test1000_110 should return false if grid has at least one unsolved cell
+    #    test1000_120 should return false if grid is completed but not compliant to sudoku rules
+    #    test1000_130 should return false if grid 
+    def test1000_100ShouldReturnTrueOnSolvedGrid(self):
+        grid = "[4, -5, -8, -9, 3, -1, -6, 7, 2, -2, 3, 7, -5, -8, 6, 9, -4, -1, -9, 6, 1, 7, 4, 2, 3, -5, 8, -3, 9, -6, -1, -5, 7, 8, -2, 4, -1, -4, 5, 3, -2, 8, -7, 6, -9, 7, 8, 2, 4, -6, 9, -5, 1, 3, 6, -1, -3, -2, 9, 5, -4, -8, -7, 8, 2, -4, 6, 7, -3, 1, 9, 5, -5, 7, 9, -8, -1, 4, -2, 3, 6]"
+        expectedResult = True 
+        actualResult = sudoku._isSolved(grid)
+        self.assertEqual(expectedResult, actualResult)
+        
+    def test1000_110ShouldReturnFalseOnUnsolvedGrid(self):
+        grid = "[4, -5, -8, -9, 3, -1, -6, 7, 2, -2, 3, 7, -5, -8, 6, 0, -4, -1, -9, 6, 1, 7, 4, 2, 3, -5, 8, -3, 9, -6, -1, -5, 7, 8, -2, 4, -1, -4, 5, 3, -2, 8, -7, 6, -9, 7, 8, 2, 4, -6, 9, -5, 1, 3, 6, -1, -3, -2, 9, 5, -4, -8, -7, 8, 2, -4, 6, 7, -3, 1, 9, 5, -5, 7, 9, -8, -1, 4, -2, 3, 6]"
+        expectedResult = False 
+        actualResult = sudoku._isSolved(grid)
+        self.assertEqual(expectedResult, actualResult)
+        
+    def test1000_120ShouldReturnFalseOnNonCompliantGrid(self):
+        grid = "[8, -5, -8, -9, 3, -1, -6, 7, 2, -2, 3, 7, -5, -8, 6, 9, -4, -1, -9, 6, 1, 7, 4, 2, 3, -5, 8, -3, 9, -6, -1, -5, 7, 8, -2, 4, -1, -4, 5, 3, -2, 8, -7, 6, -9, 7, 8, 2, 4, -6, 9, -5, 1, 3, 6, -1, -3, -2, 9, 5, -4, -8, -7, 8, 2, -4, 6, 7, -3, 1, 9, 5, -5, 7, 9, -8, -1, 4, -2, 3, 6]"
+        expectedResult = False 
+        actualResult = sudoku._isSolved(grid)
+        self.assertEqual(expectedResult, actualResult)

@@ -187,6 +187,7 @@ class SolveTest(TestCase):
         
     # _suggestSolution() unit tests
     #     test1000_100 should return completed grid
+    
     def test1000_100ShouldReturnCompletedGrid(self):
         grid = "[0,-5,-8,-9,0,-1,-6,0,0,-2,0,0,-5,-8,0,0,-4,-1,-9,0,0,0,0,0,0,-5,0,-3,0,-6,-1,-5,0,0,-2,0,-1,-4,0,0,-2,0,-7,0,-9,0,0,0,0,-6,0,-5,0,0,0,-1,-3,-2,0,0,-4,-8,-7,0,0,-4,0,0,-3,0,0,0,-5,0,0,-8,-1,0,-2,0,0]"
         expectedResult = [4, -5, -8, -9, 3, -1, -6, 7, 2, 

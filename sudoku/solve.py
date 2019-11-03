@@ -10,20 +10,38 @@ def _suggestSolution(grid):
     gridArray = json.loads(grid)
     legalValues = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     emptyArray = []
+    matrix = [[0 for rowNum in range(9)] for colNum in range(9)]
+    gridArrayIndex = 0
+    for rowIndex in range(9):
+        for columnIndex in range(9):
+            matrix[rowIndex][columnIndex] = gridArray[gridArrayIndex]
+            gridArrayIndex+=1
     if (_isCompleted(grid) and _isGridCompliant(grid)):
         return gridArray 
     elif (_isCompleted(grid) and not(_isGridCompliant(grid))):
         return emptyArray
     else:
-        for gridArrayIndex in range(len(gridArray)):    
-            if (gridArray[gridArrayIndex] == 0):
+        gridArrayIndex = 0
+        breakLoopIfTrue = False 
+        for rowIndex in range(9):
+            for columnIndex in range(9):
+                if (matrix[rowIndex][columnIndex] == 0):
+                    breakLoopIfTrue = True 
+                    break
+                gridArrayIndex += 1
+            if (breakLoopIfTrue):
                 break
         for value in legalValues:
             gridArray[gridArrayIndex] = value
-            if (len(_suggestSolution(json.dumps(gridArray))) != 0):
-                return gridArray
+            suggestedGridString = json.dumps(gridArray)
+            if (not(_isValueInRow(suggestedGridString, value, rowIndex + 1))):
+                if (not(_isValueInColumn(suggestedGridString, value, columnIndex + 1))):
+                    if (not(_isValueInSubgrid(suggestedGridString, value, rowIndex + 1, columnIndex + 1))):
+                        suggestedArray = _suggestSolution(suggestedGridString)
+                        if (len(suggestedArray) != 0):
+                            return suggestedArray
         return emptyArray
-    
+
 def _isValidGrid(grid):
     isGrid = True
     for entry in grid:

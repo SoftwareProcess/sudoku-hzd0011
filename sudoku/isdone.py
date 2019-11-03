@@ -1,5 +1,6 @@
 import json
 import hashlib
+import math
 
 def _isdone(parms):
     result = {'status': 'isdone stub'}
@@ -50,7 +51,19 @@ def _calculateHash(grid):
     return strToReturn
 
 def _isValueInRow(grid, value, row):
-    pass
+    matrix = [[0 for rowNum in range(9)] for colNum in range(9)]
+    isInRow = False
+    gridArray = json.loads(grid)
+    gridIndex = 0
+    for rowIndex in range(9):
+        for columnIndex in range(9):
+            matrix[rowIndex][columnIndex] = gridArray[gridIndex]
+            gridIndex+=1
+    for entry in matrix[row - 1]:
+        if (math.fabs(int(entry)) == math.fabs(value)):
+            isInRow = True 
+            return isInRow
+    return isInRow
 
 def _isValueInColumn(grid, value, column):
     pass

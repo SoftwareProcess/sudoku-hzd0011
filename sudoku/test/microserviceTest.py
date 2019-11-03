@@ -51,7 +51,7 @@ class MicroserviceTest(TestCase):
         result = self.microservice(parms)
         self.assertIn('status', result)
         self.assertIn('insert', result['status'])
-        
+    @skip
     def test100_030ShouldVerifyInstallOfIsdone(self):
         parms = {}
         parms['op'] = 'isdone'
@@ -697,3 +697,24 @@ class MicroserviceTest(TestCase):
         self.assertEqual('warning', actualResult['status'])
         self.assertEqual(expectedGrid, actualResult['grid'])
         
+    # Acceptance tests for isdone()
+    #    Sad path analysis:
+    #    test400_900 invalid cell value
+    #    test400_910 invalid grid length
+    #    test400_920 integrity mismatch
+    #    test400_930 missing grid
+    #    test400_940 missing integrity
+    #    
+    def test400_900ShouldErrOnInvalidCell(self):
+        parms = {}
+        parms['grid'] = ['a', 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 
+                         0, 0, 0, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 
+                         0, 0, -4, 0, 0, 0, 0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 
+                         0, 0, 0, 0, -7, 0, 0, -2, 0, -1, 0, 0, -3, 0, 0, -5, 0, -4, 
+                         0, 0, -6, 0, 0, 0, 0, 0]
+        parms['op'] = 'isdone'
+        parms['integrity'] = 'b67b6340e9f3fed97b238e1c2673f7f9f454125ea4aa8651be0e09065cd46ffb'
+        expectedResult = {}
+        expectedResult['status'] = 'error: invalid grid'
+        actualResult = self.microservice(parms)
+        self.assertEqual(expectedResult, actualResult)

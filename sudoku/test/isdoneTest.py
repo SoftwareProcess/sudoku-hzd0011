@@ -109,3 +109,10 @@ class IsdoneTest(TestCase):
         actualResult = sudoku._whichSubgrid(row, column)
         self.assertEqual(expectedResult, actualResult)
         
+    def test600_110ShouldReturnCorrectSubgridNumberForCellInMiddleOfSubgrid(self):
+        row = 5
+        column = 8
+        expectedResult = 6
+        actualResult = sudoku._whichSubgrid(row, column)
+        self.assertEqual(expectedResult, actualResult)
+        

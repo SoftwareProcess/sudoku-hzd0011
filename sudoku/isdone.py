@@ -38,7 +38,12 @@ def _isGridCompliant(grid):
     return gridIsCompliant
 
 def _isSolved(grid):
-    pass
+    gridIsSolved = False 
+    if (_isCompleted(grid)):
+        if(_isGridCompliant(grid)):
+            gridIsSolved = True 
+            return gridIsSolved
+    return gridIsSolved
 
 def _isValidGrid(grid):
     isGrid = True

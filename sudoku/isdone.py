@@ -4,6 +4,9 @@ import math
 
 def _isdone(parms):
     result = {}
+    if (not('grid' in parms)):
+        result['status'] = "error: missing grid"
+        return result
     if (not(_isValidGrid(parms['grid']))):
         result['status'] = 'error: invalid grid'
         return result

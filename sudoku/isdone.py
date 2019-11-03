@@ -20,6 +20,9 @@ def _isdone(parms):
     if (not(_isGridCompliant(parms['grid']))):
         result['status'] = 'warning'
         return result
+    if (not(_isCompleted(parms['grid']))):
+        result['status'] = 'incomplete'
+        return result
     if (_isSolved(parms['grid'])):
         result['status'] = 'solved'
         return result

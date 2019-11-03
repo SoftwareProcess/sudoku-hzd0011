@@ -718,3 +718,17 @@ class MicroserviceTest(TestCase):
         expectedResult['status'] = 'error: invalid grid'
         actualResult = self.microservice(parms)
         self.assertEqual(expectedResult, actualResult)
+        
+    def test400_910ShouldErrOnInvalidGridLength(self):
+        parms = {}
+        parms['grid'] = [0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 
+                         0, 0, 0, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 
+                         0, 0, -4, 0, 0, 0, 0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 
+                         0, 0, 0, 0, -7, 0, 0, -2, 0, -1, 0, 0, -3, 0, 0, -5, 0, -4, 
+                         0, 0, -6, 0, 0, 0, 0, 0]
+        parms['op'] = 'isdone'
+        parms['integrity'] = 'b67b6340e9f3fed97b238e1c2673f7f9f454125ea4aa8651be0e09065cd46ffb'
+        expectedResult = {}
+        expectedResult['status'] = 'error: invalid grid'
+        actualResult = self.microservice(parms)
+        self.assertEqual(expectedResult, actualResult)

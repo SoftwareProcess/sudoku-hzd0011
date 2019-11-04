@@ -827,7 +827,7 @@ class MicroserviceTest(TestCase):
     #    test500_920 missing grid
     #    test500_930 integrity mismatch
     #    test500_940 missing integrity
-    #    test500_950 unsolveable grid
+    #    test500_950 unsolvable grid
     #    
     def test500_900ShouldErrOnGridWithInvalidCell(self):
         parms = {}
@@ -890,6 +890,21 @@ class MicroserviceTest(TestCase):
         parms['op'] = 'solve'
         expectedResult = {}
         expectedResult['status'] = 'error: missing integrity'
+        actualResult = self.microservice(parms)
+        self.assertEqual(expectedResult, actualResult)
+        
+    def test500_950ShouldErrOnUnsolvableGrid(self):
+        parms = {}
+        parms['grid'] = [-8,-1,-5,-7,-6,-9,-3,-2,8,-4,-9,0,0,
+                         0,-5,-8,-7,0,0,0,-6,0,-4,-8,0,-9,-5,
+                         0,-8,-1,0,0,-3,0,0,-2,0,-5,0,-1,-8,0,
+                         -9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,
+                         -4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,
+                         -6,-3,-1,-6,0,-4,-3,-2,-7,0,0]
+        parms['op'] = 'solve'
+        parms['integrity'] = 'fb798a9148fd1854800420123530ec8a2f2ef00731d386b26eb69cb4bf9b8ffc'
+        expectedResult = {}
+        expectedResult['status'] = 'error: grid not solvable'
         actualResult = self.microservice(parms)
         self.assertEqual(expectedResult, actualResult)
         

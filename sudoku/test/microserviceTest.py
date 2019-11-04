@@ -902,7 +902,7 @@ class MicroserviceTest(TestCase):
                          -4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,
                          -6,-3,-1,-6,0,-4,-3,-2,-7,0,0]
         parms['op'] = 'solve'
-        parms['integrity'] = 'fb798a9148fd1854800420123530ec8a2f2ef00731d386b26eb69cb4bf9b8ffc'
+        parms['integrity'] = 'fb50f09c24b3af3d2633b4b6648ea412785c9d2a9ef117e7fecb3d2993456d0e'
         expectedResult = {}
         expectedResult['status'] = 'error: grid not solvable'
         actualResult = self.microservice(parms)

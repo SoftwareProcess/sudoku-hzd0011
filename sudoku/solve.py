@@ -17,6 +17,9 @@ def _solve(parms):
     if (calculatedIntegrity != parms['integrity']):
         result['status'] = 'error: integrity mismatch'
         return result
+    if (not(_isGridCompliant(parms['grid']))):
+        result['status'] = 'error: grid not solvable'
+        return result
     return result
 
 def _suggestSolution(grid):

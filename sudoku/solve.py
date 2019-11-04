@@ -20,6 +20,10 @@ def _solve(parms):
     if (not(_isGridCompliant(parms['grid']))):
         result['status'] = 'error: grid not solvable'
         return result
+    suggestedArray = _suggestSolution(parms['grid'])
+    result['grid'] = suggestedArray
+    result['status'] = 'ok'
+    result['integrity'] = _calculateHash(json.dumps(result['grid']))
     return result
 
 def _suggestSolution(grid):

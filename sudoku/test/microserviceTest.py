@@ -857,3 +857,12 @@ class MicroserviceTest(TestCase):
         actualResult = self.microservice(parms)
         self.assertEqual(expectedResult, actualResult)
         
+    def test500_920ShouldErrOnMissingGrid(self):
+        parms = {}
+        parms['integrity'] = 'd6d45914e6c180690396a9827caf07777bb77c013a647abc25fadb62bb15bdd8'
+        parms['op'] = 'solve'
+        expectedResult = {}
+        expectedResult['status'] = 'error: missing grid'
+        actualResult = self.microservice(parms)
+        self.assertEqual(expectedResult, actualResult)
+        

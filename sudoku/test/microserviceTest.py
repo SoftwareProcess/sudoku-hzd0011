@@ -873,7 +873,7 @@ class MicroserviceTest(TestCase):
                          7,8,-2,4,-1,-4,5,0,-2,8,-7,6,-9,7,8,2,4,
                          -6,9,-5,1,3,6,-1,-3,-2,9,5,-4,-8,-7,8,2,
                          -4,6,7,-3,1,9,5,-5,7,9,-8,-1,4,-2,3,6]
-        parms['op'] = 'isdone'
+        parms['op'] = 'solve'
         parms['integrity'] = '0000000000000000000000000000000000000000000000000000000000000000'
         expectedResult = {}
         expectedResult['status'] = 'error: integrity mismatch'

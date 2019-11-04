@@ -10,6 +10,10 @@ def _solve(parms):
     if (not(_isValidGrid(parms['grid']))):
         result['status'] = 'error: invalid grid'
         return result
+    calculatedIntegrity = _calculateHash(parms['grid'])
+    if (calculatedIntegrity != parms['integrity']):
+        result['status'] = 'error: integrity mismatch'
+        return result
     return result
 
 def _suggestSolution(grid):

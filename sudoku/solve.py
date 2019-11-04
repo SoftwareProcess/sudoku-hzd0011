@@ -7,6 +7,9 @@ def _solve(parms):
     if (not('grid' in parms)):
         result['status'] = 'error: missing grid'
         return result
+    if (not('integrity' in parms)):
+        result['status'] = 'error: missing integrity'
+        return result
     if (not(_isValidGrid(parms['grid']))):
         result['status'] = 'error: invalid grid'
         return result

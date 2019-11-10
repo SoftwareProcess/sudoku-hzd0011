@@ -1,3 +1,11 @@
+'''
+    Created on Nov 3, 2019
+    
+    @author: Hunter Donald hzd0011
+    
+    Production code for _isdone
+'''
+
 import json
 import hashlib
 import math

@@ -1,3 +1,11 @@
+'''
+    Created on Nov 3, 2019
+    
+    @author: Hunter Donald hzd0011
+    
+    Unit test code for _solve
+'''
+
 from unittest import TestCase
 import sudoku.solve as sudoku 
 
@@ -186,8 +194,9 @@ class SolveTest(TestCase):
         self.assertEqual(expectedResult, actualResult)
         
     # _suggestSolution() unit tests
-    #     test1000_100 should return completed grid
-    
+    #     test1000_100 should return completed grid (level 1)
+    #     test1000_110 should return completed grid (level 4)
+    #     test1000_120 should return completed grid (level 5) (takes over 3 minutes to solve, but passes)
     def test1000_100ShouldReturnCompletedGrid(self):
         grid = "[0,-5,-8,-9,0,-1,-6,0,0,-2,0,0,-5,-8,0,0,-4,-1,-9,0,0,0,0,0,0,-5,0,-3,0,-6,-1,-5,0,0,-2,0,-1,-4,0,0,-2,0,-7,0,-9,0,0,0,0,-6,0,-5,0,0,0,-1,-3,-2,0,0,-4,-8,-7,0,0,-4,0,0,-3,0,0,0,-5,0,0,-8,-1,0,-2,0,0]"
         expectedResult = [4, -5, -8, -9, 3, -1, -6, 7, 2, 
@@ -202,3 +211,14 @@ class SolveTest(TestCase):
         actualResult = sudoku._suggestSolution(grid)
         self.assertEqual(expectedResult, actualResult)
         
+    def test1000_110ShouldReturnCompletedGridlevel4(self):
+        grid = "[0, -6, -7, 0, -2, 0, 0, 0, -3, 0, -8, 0, -7, 0, -3, 0, 0, -6, -1, 0, 0, 0, 0, 0, 0, -7, 0, 0, -5, 0, 0, -3, 0, 0, 0, -8, -8, 0, 0, 0, -4, 0, 0, 0, -1, -4, 0, 0, 0, -6, 0, 0, -5, 0, -3, 0, 0, 0, 0, 0, 0, 0, -2, -6, 0, 0, -2, 0, -4, 0, -3, 0, -5, 0, 0, 0, -9, 0, -8, -4, 0]"
+        expectedResult = [9,-6,-7,4,-2,1,5,8,-3,2,-8,4,-7,5,-3,1,9,-6,-1,3,5,6,8,9,2,-7,4,7,-5,1,9,-3,2,4,6,-8,-8,9,6,5,-4,7,3,2,-1,-4,2,3,1,-6,8,7,-5,9,-3,4,9,8,7,5,6,1,-2,-6,7,8,-2,1,-4,9,-3,5,-5,1,2,3,-9,6,-8,-4,7]
+        actualResult = sudoku._suggestSolution(grid)
+        self.assertEqual(expectedResult, actualResult)
+        
+    def test1000_120ShouldReturnCompletedGridlevel5(self):
+        grid = "[-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, -2, 0, -1, 0, 0, -3, 0, 0, -5, 0, -4, 0, 0, -6, 0, 0, 0, 0, 0]"
+        expectedResult = [-2,4,8,7,-5,3,-9,-1,6,-6,3,1,9,4,-8,2,7,5,9,7,5,1,6,2,4,-3,8,5,-2,-4,3,7,9,8,6,1,1,8,6,-4,2,5,3,9,-7,7,-9,-3,8,-1,6,-5,2,4,3,6,9,5,8,-7,1,4,-2,8,-1,7,2,-3,4,6,-5,9,-4,5,2,-6,9,1,7,8,3]
+        actualResult = sudoku._suggestSolution(grid)
+        self.assertEqual(expectedResult, actualResult)

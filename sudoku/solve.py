@@ -1,3 +1,11 @@
+'''
+    Created on Nov 3, 2019
+    
+    @author: Hunter Donald hzd0011
+    
+    Production code for _solve
+'''
+
 import json
 import hashlib
 import math
@@ -60,6 +68,9 @@ def _suggestSolution(grid):
                         suggestedArray = _suggestSolution(suggestedGridString)
                         if (len(suggestedArray) != 0):
                             return suggestedArray
+                        else:
+                            gridArray[gridArrayIndex] = 0
+                            suggestedGridString = json.dumps(gridArray)
         return emptyArray
 
 def _isValidGrid(grid):

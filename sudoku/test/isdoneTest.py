@@ -1,3 +1,11 @@
+'''
+    Created on Nov 3, 2019
+    
+    @author: Hunter Donald hzd0011
+    
+    Unit test code for _isdone
+'''
+
 from unittest import TestCase
 import sudoku.isdone as sudoku 
 
